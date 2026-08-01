@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #ddf8d4;
+  /* Slightly darker than page — portrait ring, subtle chips */
+  --color-brand-bg-muted: #c8e4bc;
+  --color-brand-accent: #b2cfc0;
+  --color-brand-surface: #ddf8d4;
+  /* Slightly deeper than before for WCAG-friendly contrast on mint backgrounds */
+  --color-brand-text: #1a1426;
+  /* Links, active nav, primary CTA emphasis — deep plum */
+  --color-brand-accent-fg: #5c3a52;
+  /* Alternating full-bleed sections — slightly cooler mint */
+  --color-brand-section-muted: #cfe9c4;
+
+  /* Soft display serif + readable UI sans (variable font; strong screen legibility) */
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+
+  --spacing-15: 3.75rem;
+  --spacing-30: 7.5rem;
+
+  /* MetaBalls + interaction (read in JS via getComputedStyle) */
+  --color-metaball-primary: #e6fbde;
+  --color-metaball-cursor: #dff7d5;
+  --color-click-spark: rgba(92, 58, 82, 0.38);
+  --color-brand-rail-halo: rgba(221, 248, 212, 0.65);
+
+  --page-grad-1: #ddf8d4;
+  --page-grad-2: #cdecc4;
+  --page-grad-3: #b2cfc0;
+  --page-grad-4: #cce8c8;
+  --page-grad-5: #ddf8d4;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  font-family: var(--font-sans);
+  color: var(--color-brand-text);
+  background-color: var(--color-brand-bg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-snap-type: none;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100%;
+}
+
+@keyframes page-gradient-drift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Fixed backdrop only — cards stay solid `brand-surface` */
+.bg-page {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    125deg,
+    var(--page-grad-1) 0%,
+    var(--page-grad-2) 28%,
+    var(--page-grad-3) 52%,
+    var(--page-grad-4) 78%,
+    var(--page-grad-5) 100%
+  );
+  background-size: 220% 220%;
+}
+
+/*
+ * Alternate themes: full token sets (SeedFlip-style “seeds” — color + type + atmosphere).
+ * Contrast targets follow WCAG 2.2 AA norms for body text (~4.5:1) on typical UI surfaces.
+ */
+html[data-theme='editorial-cream'] {
+  /* Transitional serif + Adobe Source Sans lineage: long-form editorial readability */
+  --color-brand-bg: #f4efe4;
+  --color-brand-bg-muted: #e5dccf;
+  --color-brand-accent: #b8a995;
+  --color-brand-surface: #efe8dc;
+  --color-brand-text: #141413;
+  --color-brand-accent-fg: #5c3d2e;
+  --color-brand-section-muted: #e8dfd0;
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Libre Baskerville", Georgia, "Times New Roman", serif;
+  --color-metaball-primary: #ebe2d4;
+  --color-metaball-cursor: #dccfbd;
+  --color-click-spark: rgba(92, 61, 46, 0.36);
+  --color-brand-rail-halo: rgba(235, 226, 212, 0.82);
+  --page-grad-1: #f4efe4;
+  --page-grad-2: #ebe2d4;
+  --page-grad-3: #d4c4a8;
+  --page-grad-4: #e5dcc8;
+  --page-grad-5: #f4efe4;
+}
+
+html[data-theme='nordic-clay'] {
+  /* Geometric sans headlines + IBM Plex UI: cold gallery / product, distinct from serif themes */
+  --color-brand-bg: #e4e9ee;
+  --color-brand-bg-muted: #d1dae3;
+  --color-brand-accent: #94a7b8;
+  --color-brand-surface: #dce3eb;
+  --color-brand-text: #0f172a;
+  --color-brand-accent-fg: #1e3a5f;
+  --color-brand-section-muted: #cfd8e3;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --color-metaball-primary: #d8e4f0;
+  --color-metaball-cursor: #c5d5e8;
+  --color-click-spark: rgba(30, 58, 95, 0.38);
+  --color-brand-rail-halo: rgba(216, 228, 240, 0.88);
+  --page-grad-1: #e4e9ee;
+  --page-grad-2: #d8e4f0;
+  --page-grad-3: #a8c0d8;
+  --page-grad-4: #c9d8e8;
+  --page-grad-5: #e4e9ee;
+}
+
+html[data-theme='inland-indigo'] {
+  /* Source Serif 4: sturdy screen serif (replaces hairline editorial serifs); Plus Jakarta UI */
+  --color-brand-bg: #e8ebff;
+  --color-brand-bg-muted: #d4dcfa;
+  --color-brand-accent: #818cf8;
+  --color-brand-surface: #dce2ff;
+  --color-brand-text: #1e1b4b;
+  --color-brand-accent-fg: #3730a3;
+  --color-brand-section-muted: #d0d8ff;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --color-metaball-primary: #dbe4ff;
+  --color-metaball-cursor: #cfd6ff;
+  --color-click-spark: rgba(55, 48, 163, 0.34);
+  --color-brand-rail-halo: rgba(219, 228, 255, 0.9);
+  --page-grad-1: #e8ebff;
+  --page-grad-2: #d8e0ff;
+  --page-grad-3: #a5b4fc;
+  --page-grad-4: #c7d2fe;
+  --page-grad-5: #e8ebff;
+}
+
+html[data-theme='forest-canopy'] {
+  /* EB Garamond: classical book serif; Work Sans: neutral humanist UI */
+  --color-brand-bg: #ddeee0;
+  --color-brand-bg-muted: #b8d4be;
+  --color-brand-accent: #6b9f76;
+  --color-brand-surface: #d0e5d4;
+  --color-brand-text: #0f1f14;
+  --color-brand-accent-fg: #166534;
+  --color-brand-section-muted: #c5ddcb;
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "EB Garamond", Georgia, "Times New Roman", serif;
+  --color-metaball-primary: #c8ead0;
+  --color-metaball-cursor: #b3e0bf;
+  --color-click-spark: rgba(22, 101, 52, 0.36);
+  --color-brand-rail-halo: rgba(200, 234, 208, 0.82);
+  --page-grad-1: #ddeee0;
+  --page-grad-2: #c8ead0;
+  --page-grad-3: #86c793;
+  --page-grad-4: #b8e0c4;
+  --page-grad-5: #ddeee0;
+}
+
+html[data-theme='dusk-rose'] {
+  /* Domine: chunky screen serif (avoids Playfair’s hairline thin strokes); Lato body */
+  --color-brand-bg: #f5e8ec;
+  --color-brand-bg-muted: #e8d4dc;
+  --color-brand-accent: #d4a5b0;
+  --color-brand-surface: #eddbe2;
+  --color-brand-text: #3d2c35;
+  --color-brand-accent-fg: #9f3756;
+  --color-brand-section-muted: #e5ccd5;
+  --font-sans: "Lato", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Domine", Georgia, "Times New Roman", serif;
+  --color-metaball-primary: #f0d6e0;
+  --color-metaball-cursor: #e8c2d0;
+  --color-click-spark: rgba(159, 55, 86, 0.35);
+  --color-brand-rail-halo: rgba(240, 214, 224, 0.85);
+  --page-grad-1: #f5e8ec;
+  --page-grad-2: #f0d6e0;
+  --page-grad-3: #e8a4bc;
+  --page-grad-4: #edc4d3;
+  --page-grad-5: #f5e8ec;
+}
+
+/* Heavier default weight for display type where previous families felt too light */
+html[data-theme='dusk-rose'] .font-display,
+html[data-theme='inland-indigo'] .font-display {
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bg-page {
+    animation: page-gradient-drift 22s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-page {
+    animation: none;
+    background: var(--color-brand-bg);
+    background-size: 100% 100%;
+  }
+}
