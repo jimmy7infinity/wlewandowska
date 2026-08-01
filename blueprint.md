@@ -168,11 +168,11 @@ Option B: Minimal stacked cards (preferred)
 
 #### Content:
 - BA Media and Communication  
-  First Class (Destination)  
+  First Class (Distinction)  
   De Montfort University, Leicester  
 
 - Master in Marketing  
-  First Class (Destination)  
+  First Class (Distinction)  
   De Montfort University, Leicester  
 
 #### Style:
