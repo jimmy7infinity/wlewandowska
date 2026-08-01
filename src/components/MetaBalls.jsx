@@ -85,7 +85,8 @@ const float PI = 3.14159265359;
 
 float getMetaBallValue(vec2 c, float r, vec2 p) {
   vec2 d = p - c;
-  float dist2 = dot(d, d);
+  // Cap singularity at ball centers — Safari otherwise shows bright dots.
+  float dist2 = max(dot(d, d), 1e-3);
   return (r * r) / dist2;
 }
 
@@ -101,8 +102,8 @@ void main() {
   }
   float m2 = getMetaBallValue(mouseW, iCursorBallSize, coord);
   float total = m1 + m2;
-  float fw = max(fwidth(total), 0.001);
-  float f = smoothstep(-1.8, 1.8, (total - 1.3) / fw);
+  // Fixed-width edge AA (avoid fwidth — Safari often draws hard outlines/halos).
+  float f = smoothstep(1.12, 1.48, total);
   vec3 cFinal = vec3(0.0);
   if (total > 0.0) {
     float alpha1 = m1 / total;
@@ -110,7 +111,8 @@ void main() {
     cFinal = iColor * alpha1 + iCursorColor * alpha2;
   }
   if (enableTransparency) {
-    outColor = vec4(cFinal, f);
+    // Premultiplied alpha for correct Safari/WebKit compositing (no dark outlines).
+    outColor = vec4(cFinal * f, f);
   } else {
     outColor = vec4(cFinal * f, 1.0);
   }
@@ -145,7 +147,14 @@ const MetaBalls = ({
     const stops = useScrollAnchors ? METABALL_SCROLL_STOPS : null;
 
     const dpr = 1;
-    const renderer = new Renderer({ dpr, alpha: true, premultipliedAlpha: false });
+    // Premultiplied alpha matches fragment output and avoids Safari edge fringing.
+    const renderer = new Renderer({
+      dpr,
+      alpha: true,
+      premultipliedAlpha: true,
+      antialias: false,
+      depth: false,
+    });
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, enableTransparency ? 0 : 1);
     container.appendChild(gl.canvas);
@@ -228,7 +237,10 @@ const MetaBalls = ({
       gl.canvas.style.height = height + 'px';
       gl.canvas.style.display = 'block';
       gl.canvas.style.outline = 'none';
+      gl.canvas.style.border = 'none';
       gl.canvas.style.boxShadow = 'none';
+      gl.canvas.style.background = 'transparent';
+      gl.canvas.style.webkitTapHighlightColor = 'transparent';
       program.uniforms.iResolution.value.set(gl.canvas.width, gl.canvas.height, 0);
     }
     window.addEventListener('resize', resize);

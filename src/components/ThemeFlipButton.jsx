@@ -11,7 +11,7 @@ export function ThemeFlipButton() {
     <button
       type="button"
       onClick={cycleTheme}
-      className="pointer-events-auto fixed bottom-6 right-6 z-[100] flex max-w-[min(calc(100vw-3rem),14rem)] items-center gap-2 rounded-full border border-brand-text/15 bg-brand-surface/95 px-4 py-2.5 text-left text-xs font-medium text-brand-text shadow-md backdrop-blur-sm transition-[transform,box-shadow] hover:border-brand-accent-fg/35 hover:shadow-lg md:bottom-8 md:right-8"
+      className="pointer-events-auto fixed bottom-5 right-4 z-[100] flex h-11 w-11 items-center justify-center rounded-full border border-brand-text/15 bg-brand-surface/95 text-brand-accent-fg shadow-md backdrop-blur-sm transition-[transform,box-shadow,border-color] hover:border-brand-accent-fg/35 hover:shadow-lg md:bottom-8 md:right-8 md:h-auto md:w-auto md:max-w-[min(calc(100vw-3rem),14rem)] md:gap-2 md:px-4 md:py-2.5 md:text-left md:text-xs md:font-medium md:text-brand-text"
       title={`Theme: ${label}. Next: ${nextLabel}`}
       aria-label={`Current theme ${label}. Activate to switch to ${nextLabel}.`}
     >
@@ -21,7 +21,7 @@ export function ThemeFlipButton() {
       >
         ◐
       </span>
-      <span className="min-w-0 flex-1 leading-snug">
+      <span className="hidden min-w-0 flex-1 leading-snug md:block">
         <span className="block text-[10px] font-normal uppercase tracking-wider text-brand-text/55">Theme</span>
         <span className="block truncate font-medium text-brand-text">{label}</span>
       </span>
