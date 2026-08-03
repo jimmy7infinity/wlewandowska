@@ -4,6 +4,7 @@ import ClickSpark from './components/ClickSpark'
 import { Contact } from './components/Contact'
 import { CV } from './components/CV'
 import { Education } from './components/Education'
+import { HashScrollSync } from './components/HashScrollSync'
 import { Hero } from './components/Hero'
 import { MetaBallsBackdrop } from './components/MetaBallsBackdrop'
 import { Navigation } from './components/Navigation'
@@ -36,6 +37,7 @@ function App() {
               <MetaBallsBackdrop />
               <SiteHeader />
               <Navigation />
+              <HashScrollSync />
               <main className="relative z-10 pb-24 md:pb-0">
                 <Hero />
                 <About />

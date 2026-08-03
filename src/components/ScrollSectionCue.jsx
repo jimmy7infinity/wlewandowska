@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
+import { scrollToSectionId } from '../lib/scrollToSection.js'
 import { easeOut } from '../lib/motion'
 
 function ChevronDown({ className = '' }) {
@@ -26,7 +27,7 @@ function ChevronDown({ className = '' }) {
 export function ScrollSectionCue({ targetId, className = '', variant = 'line', bounce = false }) {
   const reducedMotion = useReducedMotion()
   const scrollTo = () => {
-    document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    scrollToSectionId(targetId)
   }
 
   const inner = (

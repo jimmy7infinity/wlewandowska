@@ -1,9 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { easeOut, fadeUpItem } from '../lib/motion'
+import { scrollToSectionId } from '../lib/scrollToSection.js'
 
 export function scrollToSection(id) {
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  scrollToSectionId(id)
 }
 
 export function InfographicLightbox({ image, onClose }) {

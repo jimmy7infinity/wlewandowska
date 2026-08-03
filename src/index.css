@@ -34,17 +34,27 @@
 }
 
 html {
-  /* proximity: snap at section starts without skipping long case studies to CV */
   scroll-snap-type: y proximity;
+  scroll-padding-top: 5rem;
   font-family: var(--font-sans);
   color: var(--color-brand-text);
   background-color: var(--color-brand-bg);
+  scroll-behavior: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
+/* Section tops align on manual scroll; long case studies scroll freely between anchors */
+.wl-section-snap {
+  scroll-snap-align: start;
+}
+
+.wl-case-study-snap {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+html.wl-scroll-locked {
+  scroll-snap-type: none !important;
+  scroll-behavior: smooth !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

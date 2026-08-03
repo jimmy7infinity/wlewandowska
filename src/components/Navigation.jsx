@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { scrollToSectionId } from '../lib/scrollToSection.js'
 
 const SECTIONS = [
   { id: 'hero', label: 'Intro' },
@@ -21,31 +22,42 @@ export function Navigation() {
   const [activeId, setActiveId] = useState('hero')
 
   useEffect(() => {
-    const nodes = SECTIONS.map((s) => document.getElementById(s.id)).filter(Boolean)
-    if (nodes.length === 0) return
+    let observer
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-        if (visible[0]?.target?.id) {
-          setActiveId(visible[0].target.id)
-        }
-      },
-      {
-        root: null,
-        rootMargin: '-38% 0px -42% 0px',
-        threshold: [0, 0.15, 0.35, 0.55, 0.75, 1],
-      },
-    )
+    const attach = () => {
+      observer?.disconnect()
+      const nodes = SECTIONS.map((s) => document.getElementById(s.id)).filter(Boolean)
+      if (nodes.length === 0) return
 
-    nodes.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
+      observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((e) => e.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+          if (visible[0]?.target?.id) {
+            setActiveId(visible[0].target.id)
+          }
+        },
+        {
+          root: null,
+          rootMargin: '-38% 0px -42% 0px',
+          threshold: [0, 0.15, 0.35, 0.55, 0.75, 1],
+        },
+      )
+
+      nodes.forEach((el) => observer.observe(el))
+    }
+
+    attach()
+    window.addEventListener('wl-layout-change', attach)
+    return () => {
+      observer?.disconnect()
+      window.removeEventListener('wl-layout-change', attach)
+    }
   }, [])
 
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    scrollToSectionId(id)
   }
 
   return (

@@ -26,7 +26,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[100dvh] snap-start snap-always flex-col px-4 pt-24 pb-6 sm:px-6 md:pt-28 md:pb-8"
+      className="wl-section-snap relative flex min-h-[100dvh] flex-col px-4 pt-24 pb-6 sm:px-6 md:pt-28 md:pb-8"
     >
       <div className="mx-auto flex w-full max-w-[56rem] flex-1 flex-col">
         <div className="flex min-h-0 flex-1 flex-col justify-center">

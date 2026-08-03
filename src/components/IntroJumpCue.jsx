@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
+import { scrollToSectionId } from '../lib/scrollToSection.js'
 import { easeOut } from '../lib/motion'
 
 export function IntroJumpCue({ label, targetId }) {
   const scrollTo = () => {
-    document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    scrollToSectionId(targetId)
   }
 
   return (

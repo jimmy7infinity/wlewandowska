@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion'
+import { scrollToSectionId } from '../lib/scrollToSection.js'
 import { easeOut, fadeUpItem, inViewOnce, introTextContainer, introTextItem } from '../lib/motion'
 import SpotlightCard from './SpotlightCard'
 
 export function ProjectCard({ title, description, category, skills, detailSectionId }) {
   const scrollToDetail = () => {
     if (detailSectionId) {
-      document.getElementById(detailSectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      scrollToSectionId(detailSectionId)
     }
   }
 

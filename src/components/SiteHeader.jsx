@@ -1,10 +1,11 @@
 import { contact } from '../data/content'
+import { scrollToSectionId } from '../lib/scrollToSection.js'
 import { LinkedInIcon } from './LinkedInIcon'
 
 export function SiteHeader() {
   const scrollHome = (e) => {
     e.preventDefault()
-    document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    scrollToSectionId('hero')
   }
 
   return (
