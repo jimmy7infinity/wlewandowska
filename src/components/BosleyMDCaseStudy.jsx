@@ -1,5 +1,4 @@
 import { bosleyMDCaseStudy as study } from '../data/bosleyMD'
-import { PdfLink, scrollToSection } from './caseStudyShared'
 import SpotlightCard from './SpotlightCard'
 
 export function BosleyMDCaseStudy() {
@@ -43,15 +42,9 @@ export function BosleyMDCaseStudy() {
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 rounded-2xl border border-brand-text/12 bg-brand-surface/80 p-6 md:mt-12 md:grid-cols-2 md:gap-8 md:p-8">
-          <div>
-            <p className="text-xs font-light uppercase tracking-wider text-brand-text/62">{study.role.label}</p>
-            <p className="mt-2 text-sm font-normal leading-[1.55] text-brand-text/92">{study.role.value}</p>
-          </div>
-          <div>
-            <p className="text-xs font-light uppercase tracking-wider text-brand-text/62">{study.deliverables.label}</p>
-            <p className="mt-2 text-sm font-normal leading-[1.55] text-brand-text/92">{study.deliverables.value}</p>
-          </div>
+        <div className="mt-16 max-w-[720px] md:mt-20">
+          <h3 className="font-display text-xl font-medium text-brand-text md:text-2xl">{study.contribution.heading}</h3>
+          <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/88">{study.contribution.body}</p>
         </div>
 
         <ul className="mt-10 flex flex-wrap gap-2 md:mt-12">
@@ -64,18 +57,6 @@ export function BosleyMDCaseStudy() {
             </li>
           ))}
         </ul>
-
-        <div className="mt-16 md:mt-20">
-          <h3 className="font-display text-xl font-medium text-brand-text md:text-2xl">Key findings</h3>
-          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-          {study.findings.map((item) => (
-            <article key={item.title} className="min-w-0">
-              <h3 className="font-display text-lg font-medium text-brand-text">{item.title}</h3>
-              <p className="mt-3 text-sm font-normal leading-[1.55] text-brand-text/88">{item.body}</p>
-            </article>
-          ))}
-          </div>
-        </div>
 
         <div className="mt-16 md:mt-20">
           <h3 className="font-display text-center text-xl font-medium text-brand-text md:text-2xl">
@@ -107,65 +88,9 @@ export function BosleyMDCaseStudy() {
         </div>
 
         <div className="mt-16 max-w-[720px] md:mt-20">
-          <h3 className="font-display text-xl font-medium text-brand-text md:text-2xl">{study.selectedContribution.heading}</h3>
-          <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/88">{study.selectedContribution.body}</p>
-          <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/88">
-            {study.selectedContribution.bodyContinued}
-          </p>
-        </div>
-
-        <div className="mt-14 md:mt-16">
-          <h3 className="font-display text-center text-xl font-medium text-brand-text md:text-2xl">
-            {study.demonstrates.heading}
-          </h3>
-          <p className="mx-auto mt-6 max-w-[720px] text-center text-sm font-normal leading-[1.55] text-brand-text/88">
-            {study.demonstrates.body}
-          </p>
-          <ul className="mt-10 flex flex-wrap justify-center gap-2">
-            {study.demonstrateSkills.map((skill) => (
-              <li
-                key={skill}
-                className="rounded-full border border-brand-text/12 bg-brand-bg-muted/55 px-3 py-1 text-xs font-normal text-brand-text/88"
-              >
-                {skill}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-14 md:mt-16">
-          <h3 className="font-display text-center text-xl font-medium text-brand-text md:text-2xl">
-            {study.supportingMaterials.heading}
-          </h3>
-          <div className="mx-auto mt-8 grid max-w-xl grid-cols-1 gap-4">
-            <PdfLink
-              label={study.supportingMaterials.label}
-              description={study.supportingMaterials.description}
-              href={study.supportingMaterials.collaborativeMailto}
-              linkText={study.supportingMaterials.linkText}
-            />
-          </div>
-        </div>
-
-        <div className="mx-auto mt-14 max-w-[640px] text-center md:mt-16">
-          <h3 className="font-display text-xl font-medium text-brand-text md:text-2xl">{study.closing.heading}</h3>
-          <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/88">{study.closing.body}</p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-            <button
-              type="button"
-              onClick={() => scrollToSection('contact')}
-              className="inline-flex rounded-full border border-brand-text/15 bg-brand-surface px-8 py-3 text-sm font-medium text-brand-text transition-colors duration-300 hover:border-brand-accent-fg/45 hover:text-brand-accent-fg"
-            >
-              Contact me
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollToSection('consultancy')}
-              className="inline-flex rounded-full border border-transparent px-6 py-3 text-sm font-normal text-brand-text/78 underline-offset-4 transition-colors hover:text-brand-accent-fg hover:underline"
-            >
-              Back to projects
-            </button>
-          </div>
+          <h3 className="font-display text-xl font-medium text-brand-text md:text-2xl">{study.selection.heading}</h3>
+          <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/88">{study.selection.body}</p>
+          <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/88">{study.selection.bodyContinued}</p>
         </div>
       </div>
     </section>
