@@ -34,7 +34,8 @@
 }
 
 html {
-  scroll-snap-type: y mandatory;
+  /* proximity: snap at section starts without skipping long case studies to CV */
+  scroll-snap-type: y proximity;
   font-family: var(--font-sans);
   color: var(--color-brand-text);
   background-color: var(--color-brand-bg);
@@ -216,11 +217,6 @@ html[data-theme='inland-indigo'] .font-display {
 
 html.wl-case-study-active .bg-page {
   animation-play-state: paused;
-}
-
-.case-study-mount {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 1400px;
 }
 
 @media (prefers-reduced-motion: reduce) {
