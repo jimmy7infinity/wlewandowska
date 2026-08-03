@@ -89,16 +89,9 @@ export const consultancyProjects = [
   {
     title: 'Peter Pizzeria',
     description:
-      'Mixed-methods hospitality marketing consultancy — social audit, review analysis and competitor benchmarking for 18–30 audiences across three UK locations, with a phased roadmap and proposed KPIs.',
-    category: 'Consultancy',
-    skills: ['Research', 'Strategy', 'Social audit', 'Hospitality'],
+      'An evidence-led consultancy project examining customer experience, social media performance and competitive positioning across three restaurant locations. I analysed 113 customer reviews and 20 social posts, then developed location-specific recommendations, a 12-month roadmap and a proposed KPI framework.',
+    category: 'Customer Insight and Growth Strategy',
+    skills: ['Marketing strategy', 'Consumer insights', 'Social media audit', 'Competitor analysis'],
     detailSectionId: 'consultancy-peter-pizzeria',
-  },
-  {
-    title: 'Retention playbook',
-    description:
-      'Lifecycle audit and experiment backlog to improve repeat engagement — CRM touchpoints, simple analytics views, and testable next steps.',
-    category: 'Consultancy',
-    skills: ['CRM', 'Analytics', 'Experiment design'],
   },
 ]

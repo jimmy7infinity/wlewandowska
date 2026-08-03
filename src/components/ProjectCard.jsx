@@ -59,7 +59,7 @@ export function ProjectCard({ title, description, category, skills, detailSectio
                 onClick={scrollToDetail}
                 className="text-sm font-normal text-brand-accent-fg/90 underline-offset-4 transition-colors hover:text-brand-accent-fg hover:underline"
               >
-                View case study
+                View Case Study
               </button>
             </motion.div>
           ) : null}

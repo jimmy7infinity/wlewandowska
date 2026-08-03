@@ -1,65 +1,101 @@
 export const peterPizzeriaCaseStudy = {
   id: 'consultancy-peter-pizzeria',
-  eyebrow: 'Marketing consultancy · Distinction',
-  title: 'Repositioning Peter Pizzeria for 18–30 audiences',
-  subtitle: 'Independent research and strategy — hospitality marketing',
+  eyebrow: 'Marketing strategy · Consumer insight · Awarded distinction',
+  title: 'Customer Insight and Growth Strategy for Peter Pizzeria',
+  subtitle: 'Independent mixed-methods consultancy project for a multi-location hospitality brand',
   summary:
-    'Peter Pizzeria is an independent Neapolitan-style pizzeria across Leicester, Loughborough and Nottingham. I examined how the brand could grow relevance among trend-aware 18–30 customers without a full rebrand — connecting social performance, customer reviews and competitor content into location-specific priorities, a 12-month roadmap and proposed measurement criteria.',
+    'Peter Pizzeria is an independent Neapolitan-style restaurant group operating across Leicester, Loughborough and Nottingham. I conducted a mixed-methods consultancy project to identify why customer perceptions varied between locations and how the brand could strengthen its relevance among 18–30-year-old customers without the cost and disruption of a full rebrand.',
+  summaryContinued:
+    'The project combined customer review analysis, social media auditing, competitor benchmarking and secondary research. I translated the findings into location-specific priorities, a people-first content strategy, a phased 12-month roadmap and a measurable KPI framework.',
+  role: {
+    label: 'My role',
+    value: 'Independent researcher and marketing strategist',
+  },
+  deliverables: {
+    label: 'Key deliverables',
+    value:
+      'Brand diagnosis · Customer insight analysis · Social media strategy · Competitor benchmarking · 12-month roadmap · KPI framework',
+  },
   stats: [
-    { value: '113', label: 'Customer reviews analysed' },
-    { value: '20', label: 'Instagram & TikTok posts audited' },
-    { value: '3', label: 'Locations & competitor benchmarks' },
+    { value: '113', label: 'Customer reviews coded and analysed' },
+    { value: '20', label: 'Instagram and TikTok posts audited' },
+    { value: '3', label: 'Restaurant locations compared' },
+    { value: '3', label: 'Competitor brands benchmarked' },
   ],
   highlights: [
     {
-      title: 'Customer experience',
+      title: 'Customer insight',
       body:
-        'The same brand produced different location-level outcomes — Loughborough as an internal proof point, Leicester with urgent quality and value themes, Nottingham centred on speed, delivery and collection.',
+        'Location-level review analysis exposed material differences in perceived quality, value and service. Loughborough provided the strongest internal benchmark; Leicester showed the clearest quality and value gap; Nottingham’s main friction points were speed, delivery and collection.',
     },
     {
-      title: 'Social media',
+      title: 'Content performance',
       body:
-        'People-led and humour-led content outperformed product-only posts. The audit also surfaced weak two-way dialogue on TikTok — supporting a people-first content system rather than generic food imagery.',
+        'People-led, humorous and community-focused posts generated stronger engagement signals than product-only content. Limited two-way interaction on TikTok indicated an opportunity to move from broadcast content towards a more conversational, personality-led approach.',
     },
     {
-      title: 'Strategy outcome',
+      title: 'Strategic direction',
       body:
-        'The project concluded a costly full rebrand was not required. The stronger route was closing location-level experience gaps and building a clearer, more human digital presence.',
+        'The evidence did not support a costly full rebrand. The stronger commercial route was a targeted plan to close location-level experience gaps, improve brand consistency and build a more human, locally relevant digital presence.',
     },
   ],
   skills: [
-    'Mixed-methods research',
+    'Consumer research',
+    'Insight synthesis',
     'Review analysis',
-    'Social audit',
+    'Social media auditing',
     'Competitor benchmarking',
-    'Roadmap & KPIs',
+    'Brand positioning',
+    'Strategic planning',
+    'KPI development',
   ],
+  evidenceIntro:
+    'The analysis combined four research streams to identify commercially relevant patterns and convert them into practical priorities for implementation.',
   infographics: [
     {
       src: '/projects/peter-pizzeria/research-approach.png',
       alt: 'Research approach: social media audit, TripAdvisor review analysis, competitor benchmarking and secondary research, triangulated for evidence-based recommendations.',
-      caption: 'Research approach — four streams triangulated.',
+      caption:
+        'Mixed-methods research framework used to identify customer experience, content and positioning opportunities.',
     },
     {
       src: '/projects/peter-pizzeria/proposed-kpis.png',
       alt: 'Proposed KPIs including weekly TikTok and Instagram cadence, people-led content share, engagement targets, Leicester rating goal, and pizza sentiment targets.',
-      caption: 'Proposed KPIs — recommended targets for implementation.',
+      caption: 'KPI framework designed to measure implementation of the proposed strategy over a 12-month period.',
+      heading: 'Proposed KPIs',
     },
   ],
+  demonstrates: {
+    heading: 'What this project demonstrates',
+    body:
+      'The ability to turn customer feedback, social media performance and competitor research into a commercially focused marketing strategy. The project demonstrates strengths in research design, qualitative coding, insight synthesis, brand diagnosis, strategic prioritisation and the development of measurable recommendations.',
+  },
+  supportingMaterials: {
+    heading: 'Supporting materials',
+    intro:
+      'Explore the project in more detail through the concise visual case study and complete consultancy report.',
+  },
   downloads: [
     {
-      label: 'Case study (PDF)',
-      href: '/downloads/peter-pizzeria/peter-pizzeria-case-study.pdf',
-      description: '9-page portfolio summary',
+      label: 'Executive case study',
+      href: '/documents/peter-pizzeria-case-study.pdf',
+      description: '9-page visual portfolio summary',
+      linkText: 'View case study',
     },
     {
-      label: 'Original report (PDF)',
-      href: '/downloads/peter-pizzeria/peter-pizzeria-original-report.pdf',
-      description: 'Full academic submission',
+      label: 'Full consultancy report',
+      href: '/documents/peter-pizzeria-full-consultancy-report.pdf',
+      description: 'Complete methodology, analysis and strategic recommendations',
+      linkText: 'View full report',
     },
   ],
   kpiDisclaimer:
-    'KPI figures shown in the infographic are proposed performance targets for strategy implementation — not achieved results.',
+    'Proposed KPI figures are recommended targets for strategy implementation — not achieved results.',
   projectDisclaimer:
-    'Academic consultancy project completed for university assessment. Recommendations were proposed; implementation and commercial outcomes were not independently verified.',
+    'This was an individual academic consultancy project completed as part of my Marketing Management degree and awarded Distinction. Recommendations and KPIs were developed from original research; implementation and commercial outcomes were not independently measured.',
+  closing: {
+    heading: 'Interested in working together?',
+    body:
+      'I am open to opportunities in marketing research, consumer insight, social media strategy, content development and digital storytelling.',
+  },
 }
