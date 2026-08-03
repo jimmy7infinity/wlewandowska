@@ -9,6 +9,7 @@ const SECTIONS = [
   { id: 'media', label: 'Media' },
   { id: 'consultancy', label: 'Consult' },
   { id: 'consultancy-peter-pizzeria', label: 'Peter P.' },
+  { id: 'consultancy-bosleymd', label: 'Bosley' },
   { id: 'experience-intro', label: 'CV' },
   { id: 'experience-think-pacific', label: 'Pacific' },
   { id: 'experience-dmu', label: 'DMU' },

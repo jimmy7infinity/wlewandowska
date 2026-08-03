@@ -14,7 +14,6 @@ const INTRO_KEY = {
 export function Projects({ id, title, projects }) {
   const introKey = INTRO_KEY[id]
   const intro = introKey ? sectionIntros[introKey] : null
-  const featuredDetailId = projects.find((p) => p.detailSectionId)?.detailSectionId
 
   return (
     <SectionShell id={id}>
@@ -47,9 +46,13 @@ export function Projects({ id, title, projects }) {
             <ProjectCard key={project.title} {...project} />
           ))}
         </motion.div>
-        {featuredDetailId ? (
-          <motion.div variants={fadeUpItem} className="mt-10 flex justify-center md:mt-12">
-            <IntroJumpCue label="Peter Pizzeria case study" targetId={featuredDetailId} />
+        {projects.some((p) => p.detailSectionId) ? (
+          <motion.div variants={fadeUpItem} className="mt-10 flex flex-col items-center gap-6 md:mt-12">
+            {projects
+              .filter((p) => p.detailSectionId)
+              .map((p) => (
+                <IntroJumpCue key={p.detailSectionId} label={`${p.title} case study`} targetId={p.detailSectionId} />
+              ))}
           </motion.div>
         ) : null}
       </motion.div>

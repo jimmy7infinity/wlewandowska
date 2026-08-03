@@ -36,6 +36,13 @@ export const METABALL_SCROLL_STOPS = [
     groupOffsetY: 0.08,
   },
   {
+    id: 'consultancy-bosleymd',
+    clusterAnchorX: 0.72,
+    clusterAnchorY: 0.52,
+    groupOffsetX: 0.38,
+    groupOffsetY: 0.04,
+  },
+  {
     id: 'experience-intro',
     clusterAnchorX: 0.5,
     clusterAnchorY: 0.76,

@@ -94,4 +94,12 @@ export const consultancyProjects = [
     skills: ['Marketing strategy', 'Consumer insights', 'Social media audit', 'Competitor analysis'],
     detailSectionId: 'consultancy-peter-pizzeria',
   },
+  {
+    title: 'BosleyMD',
+    description:
+      'A Distinction-level analysis of customer experience, acquisition, retention and development in the hair restoration market. I benchmarked BosleyMD against UK competitors, developed three SMART digital recommendations and was later selected to co-author a practitioner consultancy report for the brand.',
+    category: 'Customer Strategy & Digital Engagement',
+    skills: ['Consumer experience', 'Digital strategy', 'Competitor benchmarking', 'CRM', 'Personalisation'],
+    detailSectionId: 'consultancy-bosleymd',
+  },
 ]

@@ -9,6 +9,7 @@ import { MetaBallsBackdrop } from './components/MetaBallsBackdrop'
 import { Navigation } from './components/Navigation'
 import { PageLoadTransition } from './components/PageLoadTransition'
 import { SiteHeader } from './components/SiteHeader'
+import { BosleyMDCaseStudy } from './components/BosleyMDCaseStudy'
 import { PeterPizzeriaCaseStudy } from './components/PeterPizzeriaCaseStudy'
 import { Projects } from './components/Projects'
 import { ThemeFlipButton } from './components/ThemeFlipButton'
@@ -41,6 +42,7 @@ function App() {
                 <Projects id="media" title="Featured media projects" projects={mediaProjects} />
                 <Projects id="consultancy" title="Featured consultancy projects" projects={consultancyProjects} />
                 <PeterPizzeriaCaseStudy />
+                <BosleyMDCaseStudy />
                 <CV />
                 <Contact />
               </main>
