@@ -17,7 +17,6 @@ export function PeterPizzeriaCaseStudy() {
   return (
     <>
       <section
-        id={study.id}
         className="relative snap-start snap-always scroll-mt-0 px-6 py-20 md:py-[120px]"
       >
         <motion.div

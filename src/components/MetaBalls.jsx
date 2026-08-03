@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Renderer, Program, Mesh, Triangle, Transform, Vec3, Camera } from 'ogl';
-import { computeMetaballScrollTarget, METABALL_SCROLL_STOPS } from '../data/metaballStops';
+import { computeMetaballScrollTarget, measureMetaballScrollStops, METABALL_SCROLL_STOPS } from '../data/metaballStops';
 
 function parseHexColor(hex) {
   const c = hex.replace('#', '');
@@ -228,6 +228,30 @@ const MetaBalls = ({
     let pointerX = 0;
     let pointerY = 0;
 
+    const scrollTarget = { current: null };
+    const measuredStops = { current: [] };
+    let scrollMeasurePending = false;
+
+    function syncScrollTarget() {
+      if (!stops?.length) return;
+      measuredStops.current = measureMetaballScrollStops(stops, window.scrollY);
+      scrollTarget.current = computeMetaballScrollTarget(
+        stops,
+        window.scrollY,
+        window.innerHeight,
+        measuredStops.current,
+      );
+    }
+
+    function scheduleScrollTargetSync() {
+      if (scrollMeasurePending) return;
+      scrollMeasurePending = true;
+      requestAnimationFrame(() => {
+        scrollMeasurePending = false;
+        syncScrollTarget();
+      });
+    }
+
     function resize() {
       if (!container) return;
       const width = container.clientWidth;
@@ -242,6 +266,7 @@ const MetaBalls = ({
       gl.canvas.style.background = 'transparent';
       gl.canvas.style.webkitTapHighlightColor = 'transparent';
       program.uniforms.iResolution.value.set(gl.canvas.width, gl.canvas.height, 0);
+      scheduleScrollTargetSync();
     }
     window.addEventListener('resize', resize);
     resize();
@@ -266,15 +291,34 @@ const MetaBalls = ({
     }
     window.addEventListener('pointermove', onWindowPointerMove, { passive: true });
 
+    if (stops?.length) {
+      syncScrollTarget();
+      window.addEventListener('scroll', scheduleScrollTargetSync, { passive: true });
+      window.addEventListener('wl-layout-change', scheduleScrollTargetSync);
+    }
+
+    let tabVisible = document.visibilityState !== 'hidden';
+    let animationFrameId = 0;
+    function onVisibilityChange() {
+      tabVisible = document.visibilityState !== 'hidden';
+      if (tabVisible && !animationFrameId) {
+        animationFrameId = requestAnimationFrame(update);
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
     const startTime = performance.now();
-    let animationFrameId;
     function update(t) {
+      if (!tabVisible) {
+        animationFrameId = 0;
+        return;
+      }
       animationFrameId = requestAnimationFrame(update);
       const elapsed = (t - startTime) * 0.001;
       program.uniforms.iTime.value = elapsed;
 
       if (stops?.length) {
-        const tgt = computeMetaballScrollTarget(stops, window.scrollY, window.innerHeight);
+        const tgt = scrollTarget.current;
         if (tgt) {
           const k = scrollLerpWeight;
           live.anchorX += (tgt.clusterAnchorX - live.anchorX) * k;
@@ -328,6 +372,11 @@ const MetaBalls = ({
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', resize);
       window.removeEventListener('pointermove', onWindowPointerMove);
+      if (stops?.length) {
+        window.removeEventListener('scroll', scheduleScrollTargetSync);
+        window.removeEventListener('wl-layout-change', scheduleScrollTargetSync);
+      }
+      document.removeEventListener('visibilitychange', onVisibilityChange);
       container.removeChild(gl.canvas);
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };

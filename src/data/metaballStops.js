@@ -83,19 +83,21 @@ function pickTarget(s) {
 }
 
 /** Interpolate metaball anchors from scroll position (viewport reference line). */
-export function computeMetaballScrollTarget(stops, scrollY, viewportHeight) {
+export function computeMetaballScrollTarget(stops, scrollY, viewportHeight, enrichedStops) {
   if (!stops?.length) return null
   const viewRef = scrollY + viewportHeight * 0.45
 
-  const enriched = stops
-    .map((s) => {
-      const el = document.getElementById(s.id)
-      if (!el) return null
-      const r = el.getBoundingClientRect()
-      const midY = scrollY + r.top + r.height * 0.5
-      return { ...s, midY }
-    })
-    .filter(Boolean)
+  const enriched =
+    enrichedStops ??
+    stops
+      .map((s) => {
+        const el = document.getElementById(s.id)
+        if (!el) return null
+        const r = el.getBoundingClientRect()
+        const midY = scrollY + r.top + r.height * 0.5
+        return { ...s, midY }
+      })
+      .filter(Boolean)
 
   if (!enriched.length) return null
 
@@ -120,4 +122,18 @@ export function computeMetaballScrollTarget(stops, scrollY, viewportHeight) {
   }
 
   return pickTarget(last)
+}
+
+/** Measure section midpoints once per scroll frame — not inside the WebGL rAF loop. */
+export function measureMetaballScrollStops(stops, scrollY) {
+  if (!stops?.length) return []
+  return stops
+    .map((s) => {
+      const el = document.getElementById(s.id)
+      if (!el) return null
+      const r = el.getBoundingClientRect()
+      const midY = scrollY + r.top + r.height * 0.5
+      return { ...s, midY }
+    })
+    .filter(Boolean)
 }

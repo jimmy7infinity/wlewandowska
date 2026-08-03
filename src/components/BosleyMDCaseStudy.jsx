@@ -24,7 +24,7 @@ export function BosleyMDCaseStudy() {
 
   return (
     <>
-      <section id={study.id} className="relative snap-start snap-always scroll-mt-0 px-6 py-20 md:py-[120px]">
+      <section className="relative snap-start snap-always scroll-mt-0 px-6 py-20 md:py-[120px]">
         <motion.div
           className="mx-auto w-full max-w-[1100px]"
           initial="hidden"

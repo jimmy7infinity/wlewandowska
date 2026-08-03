@@ -54,13 +54,13 @@ export const peterPizzeriaCaseStudy = {
     'The analysis combined four research streams to identify commercially relevant patterns and convert them into practical priorities for implementation.',
   infographics: [
     {
-      src: '/projects/peter-pizzeria/research-approach.png',
+      src: '/projects/peter-pizzeria/research-approach.webp',
       alt: 'Research approach: social media audit, TripAdvisor review analysis, competitor benchmarking and secondary research, triangulated for evidence-based recommendations.',
       caption:
         'Mixed-methods framework used to identify customer experience, content and positioning opportunities.',
     },
     {
-      src: '/projects/peter-pizzeria/proposed-kpis.png',
+      src: '/projects/peter-pizzeria/proposed-kpis.webp',
       alt: 'Proposed KPIs including weekly TikTok and Instagram cadence, people-led content share, engagement targets, Leicester rating goal, and pizza sentiment targets.',
       caption: 'Proposed KPI framework for measuring strategy implementation over 12 months.',
     },
