@@ -1,5 +1,6 @@
 import { useReducedMotion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { useCaseStudyMetaballSuppress } from '../hooks/useCaseStudyMetaballSuppress.js'
 import { useTheme } from '../theme/useTheme.js'
 import { useMetaballColors } from '../theme/useThemeColors.js'
 
@@ -9,6 +10,7 @@ import { useMetaballColors } from '../theme/useThemeColors.js'
 export function MetaBallsBackdrop() {
   const [MetaBalls, setMetaBalls] = useState(null)
   const reduceMotion = useReducedMotion()
+  const suppressDuringCaseStudies = useCaseStudyMetaballSuppress()
   const { themeId } = useTheme()
   const { color, cursorBallColor } = useMetaballColors()
 
@@ -26,7 +28,9 @@ export function MetaBallsBackdrop() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-[1] overflow-hidden"
+      className={`pointer-events-none fixed inset-0 z-[1] overflow-hidden transition-opacity duration-700 ease-out ${
+        suppressDuringCaseStudies ? 'opacity-0' : 'opacity-100'
+      }`}
       aria-hidden
     >
       <MetaBalls
@@ -38,12 +42,13 @@ export function MetaBallsBackdrop() {
         ballCount={12}
         clumpFactor={0.72}
         cursorBallSize={2.4}
-        enableMouseInteraction
+        enableMouseInteraction={!suppressDuringCaseStudies}
         hoverSmoothness={0.1}
         enableTransparency
         useScrollAnchors
         scrollLerpWeight={reduceMotion ? 1 : 0.052}
         mouseProximityRadius={300}
+        paused={suppressDuringCaseStudies}
       />
     </div>
   )

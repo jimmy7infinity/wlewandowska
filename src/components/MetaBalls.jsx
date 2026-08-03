@@ -136,9 +136,17 @@ const MetaBalls = ({
   mouseClusterAnchorY = 0.65,
   mouseProximityRadius = 280,
   useScrollAnchors = false,
-  scrollLerpWeight = 0.055
+  scrollLerpWeight = 0.055,
+  paused = false
 }) => {
   const containerRef = useRef(null);
+  const pausedRef = useRef(paused);
+  const resumeLoopRef = useRef(() => {});
+  pausedRef.current = paused;
+
+  useEffect(() => {
+    if (!paused) resumeLoopRef.current();
+  }, [paused]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -233,7 +241,7 @@ const MetaBalls = ({
     let scrollMeasurePending = false;
 
     function syncScrollTarget() {
-      if (!stops?.length) return;
+      if (!stops?.length || pausedRef.current) return;
       measuredStops.current = measureMetaballScrollStops(stops, window.scrollY);
       scrollTarget.current = computeMetaballScrollTarget(
         stops,
@@ -301,7 +309,7 @@ const MetaBalls = ({
     let animationFrameId = 0;
     function onVisibilityChange() {
       tabVisible = document.visibilityState !== 'hidden';
-      if (tabVisible && !animationFrameId) {
+      if (tabVisible && !animationFrameId && !pausedRef.current) {
         animationFrameId = requestAnimationFrame(update);
       }
     }
@@ -309,7 +317,7 @@ const MetaBalls = ({
 
     const startTime = performance.now();
     function update(t) {
-      if (!tabVisible) {
+      if (!tabVisible || pausedRef.current) {
         animationFrameId = 0;
         return;
       }
@@ -367,6 +375,12 @@ const MetaBalls = ({
       renderer.render({ scene, camera });
     }
     animationFrameId = requestAnimationFrame(update);
+
+    resumeLoopRef.current = () => {
+      if (!animationFrameId && !pausedRef.current && tabVisible) {
+        animationFrameId = requestAnimationFrame(update);
+      }
+    };
 
     return () => {
       cancelAnimationFrame(animationFrameId);
