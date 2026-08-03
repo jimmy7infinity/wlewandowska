@@ -40,17 +40,17 @@ export const bosleyMDCaseStudy = {
   ],
   findings: [
     {
-      title: 'Strong credibility, but limited two-way engagement',
+      title: '1. Strong credibility, but limited two-way engagement',
       body:
         'BosleyMD successfully reduced uncertainty through expert guidance and educational content, but customers had limited opportunities to ask questions, share experiences or receive personalised support.',
     },
     {
-      title: 'Competitors reduced uncertainty earlier',
+      title: '2. Competitors reduced uncertainty earlier',
       body:
         'HHC Clinics and British Hair Clinic used clearer information, visible social proof, approachable communication and structured support to build confidence earlier in the customer journey.',
     },
     {
-      title: 'Digital personalisation was underused',
+      title: '3. Digital personalisation was underused',
       body:
         'BosleyMD had opportunities to strengthen personalised guidance, customer participation and community-building across its digital channels.',
     },
