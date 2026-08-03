@@ -13,7 +13,9 @@ export function useCaseStudyMetaballSuppress() {
     let observer
 
     const recompute = () => {
-      setSuppressed([...visibility.values()].some(Boolean))
+      const next = [...visibility.values()].some(Boolean)
+      setSuppressed(next)
+      document.documentElement.classList.toggle('wl-case-study-active', next)
     }
 
     const attach = () => {
@@ -44,6 +46,7 @@ export function useCaseStudyMetaballSuppress() {
 
     return () => {
       observer?.disconnect()
+      document.documentElement.classList.remove('wl-case-study-active')
       window.removeEventListener('wl-layout-change', attach)
       window.removeEventListener('hashchange', attach)
     }

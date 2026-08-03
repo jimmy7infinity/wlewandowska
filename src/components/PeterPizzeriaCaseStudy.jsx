@@ -1,5 +1,4 @@
 import { useCallback, useState } from 'react'
-import { motion } from 'framer-motion'
 import { peterPizzeriaCaseStudy as study } from '../data/peterPizzeria'
 import {
   EvidenceFigure,
@@ -7,7 +6,6 @@ import {
   PdfLink,
   scrollToSection,
 } from './caseStudyShared'
-import { fadeUpItem, inViewOnce, introTextItem, staggerContainer, staggerList } from '../lib/motion'
 import SpotlightCard from './SpotlightCard'
 
 export function PeterPizzeriaCaseStudy() {
@@ -16,17 +14,9 @@ export function PeterPizzeriaCaseStudy() {
 
   return (
     <>
-      <section
-        className="relative snap-start snap-always scroll-mt-0 px-6 py-20 md:py-[120px]"
-      >
-        <motion.div
-          className="mx-auto w-full max-w-[1100px]"
-          initial="hidden"
-          whileInView="show"
-          viewport={inViewOnce}
-          variants={staggerContainer}
-        >
-          <motion.header variants={fadeUpItem} className="max-w-[700px]">
+      <section className="relative scroll-mt-0 px-6 py-20 md:py-[120px]">
+        <div className="mx-auto w-full max-w-[1100px]">
+          <header className="max-w-[700px]">
             <p className="text-xs font-light uppercase tracking-[0.35em] text-brand-text/62">{study.eyebrow}</p>
             <h2 className="font-display mt-4 text-[32px] font-medium tracking-tight text-brand-text md:text-[40px]">
               {study.title}
@@ -36,12 +26,9 @@ export function PeterPizzeriaCaseStudy() {
             <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/92 md:text-base">
               {study.summaryContinued}
             </p>
-          </motion.header>
+          </header>
 
-          <motion.div
-            variants={fadeUpItem}
-            className="mt-10 grid grid-cols-1 gap-6 rounded-2xl border border-brand-text/12 bg-brand-surface/80 p-6 md:mt-12 md:grid-cols-2 md:gap-8 md:p-8"
-          >
+          <div className="mt-10 grid grid-cols-1 gap-6 rounded-2xl border border-brand-text/12 bg-brand-surface/80 p-6 md:mt-12 md:grid-cols-2 md:gap-8 md:p-8">
             <div>
               <p className="text-xs font-light uppercase tracking-wider text-brand-text/62">{study.role.label}</p>
               <p className="mt-2 text-sm font-normal leading-[1.55] text-brand-text/92">{study.role.value}</p>
@@ -50,35 +37,33 @@ export function PeterPizzeriaCaseStudy() {
               <p className="text-xs font-light uppercase tracking-wider text-brand-text/62">{study.deliverables.label}</p>
               <p className="mt-2 text-sm font-normal leading-[1.55] text-brand-text/92">{study.deliverables.value}</p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.ul
-            variants={staggerList}
-            className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 md:mt-12"
-          >
+          <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 md:mt-12">
             {study.stats.map((stat) => (
-              <motion.li key={stat.label} variants={fadeUpItem}>
+              <li key={stat.label}>
                 <SpotlightCard
+                  interactive={false}
                   className="h-full rounded-2xl border border-brand-text/12 bg-brand-surface px-5 py-6 text-center shadow-[0_12px_36px_-20px_rgba(26,20,38,0.1)]"
                   spotlightColor="rgba(178, 207, 192, 0.38)"
                 >
                   <p className="font-display text-3xl font-medium text-brand-text md:text-4xl">{stat.value}</p>
                   <p className="mt-2 text-xs font-normal leading-snug text-brand-text/78">{stat.label}</p>
                 </SpotlightCard>
-              </motion.li>
+              </li>
             ))}
-          </motion.ul>
+          </ul>
 
-          <motion.div variants={staggerList} className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3 md:gap-8">
+          <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3 md:gap-8">
             {study.highlights.map((item) => (
-              <motion.article key={item.title} variants={fadeUpItem} className="min-w-0">
+              <article key={item.title} className="min-w-0">
                 <h3 className="font-display text-lg font-medium text-brand-text">{item.title}</h3>
                 <p className="mt-3 text-sm font-normal leading-[1.55] text-brand-text/88">{item.body}</p>
-              </motion.article>
+              </article>
             ))}
-          </motion.div>
+          </div>
 
-          <motion.ul variants={introTextItem} className="mt-10 flex flex-wrap gap-2 md:mt-12">
+          <ul className="mt-10 flex flex-wrap gap-2 md:mt-12">
             {study.skills.map((skill) => (
               <li
                 key={skill}
@@ -87,9 +72,9 @@ export function PeterPizzeriaCaseStudy() {
                 {skill}
               </li>
             ))}
-          </motion.ul>
+          </ul>
 
-          <motion.div variants={fadeUpItem} className="mt-16 md:mt-20">
+          <div className="mt-16 md:mt-20">
             <h3 className="font-display text-center text-xl font-medium text-brand-text md:text-2xl">
               {study.evidenceHeading}
             </h3>
@@ -101,18 +86,18 @@ export function PeterPizzeriaCaseStudy() {
                 <EvidenceFigure key={img.src} img={img} onOpen={setLightboxImage} />
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div variants={fadeUpItem} className="mt-14 md:mt-16">
+          <div className="mt-14 md:mt-16">
             <h3 className="font-display text-center text-xl font-medium text-brand-text md:text-2xl">
               {study.demonstrates.heading}
             </h3>
             <p className="mx-auto mt-6 max-w-[720px] text-center text-sm font-normal leading-[1.55] text-brand-text/88">
               {study.demonstrates.body}
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div variants={fadeUpItem} className="mt-14 md:mt-16">
+          <div className="mt-14 md:mt-16">
             <h3 className="font-display text-center text-xl font-medium text-brand-text md:text-2xl">
               {study.supportingMaterials.heading}
             </h3>
@@ -124,16 +109,13 @@ export function PeterPizzeriaCaseStudy() {
                 <PdfLink key={file.href} {...file} />
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.aside
-            variants={fadeUpItem}
-            className="mx-auto mt-10 max-w-[720px] rounded-2xl border border-brand-text/10 bg-brand-bg-muted/35 px-6 py-4 text-center md:mt-12"
-          >
+          <aside className="mx-auto mt-10 max-w-[720px] rounded-2xl border border-brand-text/10 bg-brand-bg-muted/35 px-6 py-4 text-center md:mt-12">
             <p className="text-xs font-light leading-[1.55] text-brand-text/68">{study.projectDisclaimer}</p>
-          </motion.aside>
+          </aside>
 
-          <motion.div variants={fadeUpItem} className="mx-auto mt-14 max-w-[640px] text-center md:mt-16">
+          <div className="mx-auto mt-14 max-w-[640px] text-center md:mt-16">
             <h3 className="font-display text-xl font-medium text-brand-text md:text-2xl">{study.closing.heading}</h3>
             <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/88">{study.closing.body}</p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
@@ -152,8 +134,8 @@ export function PeterPizzeriaCaseStudy() {
                 Back to projects
               </button>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </section>
 
       <InfographicLightbox image={lightboxImage} onClose={closeLightbox} />

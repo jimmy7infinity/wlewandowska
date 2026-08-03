@@ -1,5 +1,4 @@
 import { useCallback, useState } from 'react'
-import { motion } from 'framer-motion'
 import { bosleyMDCaseStudy as study } from '../data/bosleyMD'
 import {
   EvidenceFigure,
@@ -7,7 +6,6 @@ import {
   PdfLink,
   scrollToSection,
 } from './caseStudyShared'
-import { easeOut, fadeUpItem, inViewOnce, introTextItem, staggerContainer, staggerList } from '../lib/motion'
 import SpotlightCard from './SpotlightCard'
 
 function SectionTitle({ children, className = 'text-center' }) {
@@ -24,15 +22,9 @@ export function BosleyMDCaseStudy() {
 
   return (
     <>
-      <section className="relative snap-start snap-always scroll-mt-0 px-6 py-20 md:py-[120px]">
-        <motion.div
-          className="mx-auto w-full max-w-[1100px]"
-          initial="hidden"
-          whileInView="show"
-          viewport={inViewOnce}
-          variants={staggerContainer}
-        >
-          <motion.header variants={fadeUpItem} className="max-w-[720px]">
+      <section className="relative scroll-mt-0 px-6 py-20 md:py-[120px]">
+        <div className="mx-auto w-full max-w-[1100px]">
+          <header className="max-w-[720px]">
             <p className="text-xs font-light uppercase tracking-[0.35em] text-brand-text/62">{study.eyebrow}</p>
             <h2 className="font-display mt-4 text-[32px] font-medium tracking-tight text-brand-text md:text-[40px]">
               {study.title}
@@ -40,12 +32,9 @@ export function BosleyMDCaseStudy() {
             <p className="mt-3 text-sm font-light leading-[1.55] text-brand-text/72 md:text-base">{study.subtitle}</p>
             <p className="mt-6 text-sm font-normal leading-[1.55] text-brand-text/92 md:text-base">{study.summary}</p>
             <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/92 md:text-base">{study.summaryContinued}</p>
-          </motion.header>
+          </header>
 
-          <motion.div
-            variants={fadeUpItem}
-            className="mt-10 overflow-hidden rounded-2xl border border-[#1e3a5f]/20 bg-[#0f2744] px-6 py-8 text-white shadow-[0_14px_44px_-26px_rgba(15,39,68,0.45)] md:mt-12 md:px-10 md:py-10"
-          >
+          <div className="mt-10 overflow-hidden rounded-2xl border border-[#1e3a5f]/20 bg-[#0f2744] px-6 py-8 text-white shadow-[0_14px_44px_-26px_rgba(15,39,68,0.45)] md:mt-12 md:px-10 md:py-10">
             <p className="text-xs font-light uppercase tracking-[0.3em] text-white/72">Case study overview</p>
             <p className="font-display mt-3 text-2xl font-medium md:text-3xl">{study.heroVisual.title}</p>
             <ul className="mt-6 flex flex-wrap gap-2">
@@ -58,12 +47,9 @@ export function BosleyMDCaseStudy() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={fadeUpItem}
-            className="mt-10 grid grid-cols-1 gap-6 rounded-2xl border border-brand-text/12 bg-brand-surface/80 p-6 md:mt-12 md:grid-cols-2 md:gap-8 md:p-8"
-          >
+          <div className="mt-10 grid grid-cols-1 gap-6 rounded-2xl border border-brand-text/12 bg-brand-surface/80 p-6 md:mt-12 md:grid-cols-2 md:gap-8 md:p-8">
             <div>
               <p className="text-xs font-light uppercase tracking-wider text-brand-text/62">{study.role.label}</p>
               <p className="mt-2 text-sm font-normal leading-[1.55] text-brand-text/92">{study.role.value}</p>
@@ -72,32 +58,30 @@ export function BosleyMDCaseStudy() {
               <p className="text-xs font-light uppercase tracking-wider text-brand-text/62">{study.module.label}</p>
               <p className="mt-2 text-sm font-normal leading-[1.55] text-brand-text/92">{study.module.value}</p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.ul
-            variants={staggerList}
-            className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 md:mt-12"
-          >
+          <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 md:mt-12">
             {study.stats.map((stat) => (
-              <motion.li key={stat.label} variants={fadeUpItem}>
+              <li key={stat.label}>
                 <SpotlightCard
+                  interactive={false}
                   className="h-full rounded-2xl border border-brand-text/12 bg-brand-surface px-5 py-6 text-center shadow-[0_12px_36px_-20px_rgba(26,20,38,0.1)]"
                   spotlightColor="rgba(178, 207, 192, 0.38)"
                 >
                   <p className="font-display text-3xl font-medium text-brand-text md:text-4xl">{stat.value}</p>
                   <p className="mt-2 text-xs font-normal leading-snug text-brand-text/78">{stat.label}</p>
                 </SpotlightCard>
-              </motion.li>
+              </li>
             ))}
-          </motion.ul>
+          </ul>
 
-          <motion.div variants={fadeUpItem} className="mt-16 max-w-[720px] md:mt-20">
+          <div className="mt-16 max-w-[720px] md:mt-20">
             <SectionTitle className="text-left">{study.challenge.heading}</SectionTitle>
             <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/88">{study.challenge.body}</p>
             <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/88">{study.challenge.bodyContinued}</p>
-          </motion.div>
+          </div>
 
-          <motion.div variants={fadeUpItem} className="mt-12 md:mt-16">
+          <div className="mt-12 md:mt-16">
             <SectionTitle className="text-left">{study.contribution.heading}</SectionTitle>
             <p className="mt-4 max-w-[720px] text-sm font-normal leading-[1.55] text-brand-text/88">{study.contribution.intro}</p>
             <ul className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -110,9 +94,9 @@ export function BosleyMDCaseStudy() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div variants={fadeUpItem} className="mt-16 md:mt-20">
+          <div className="mt-16 md:mt-20">
             <SectionTitle className="text-left">{study.research.heading}</SectionTitle>
             <p className="mt-2 text-sm font-light text-brand-text/72">{study.research.intro}</p>
             <p className="mt-4 max-w-[720px] text-sm font-normal leading-[1.55] text-brand-text/88">{study.research.body}</p>
@@ -127,9 +111,9 @@ export function BosleyMDCaseStudy() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div variants={fadeUpItem} className="mt-16 md:mt-20">
+          <div className="mt-16 md:mt-20">
             <SectionTitle className="text-left">{study.findings.heading}</SectionTitle>
             <p className="mt-2 text-sm font-light text-brand-text/72">{study.findings.intro}</p>
             <ol className="mt-8 space-y-6">
@@ -145,15 +129,16 @@ export function BosleyMDCaseStudy() {
                 </li>
               ))}
             </ol>
-          </motion.div>
+          </div>
 
-          <motion.div variants={fadeUpItem} className="mt-16 md:mt-20">
+          <div className="mt-16 md:mt-20">
             <SectionTitle>{study.competitors.heading}</SectionTitle>
             <p className="mx-auto mt-2 max-w-[640px] text-center text-sm font-light text-brand-text/72">{study.competitors.intro}</p>
             <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
               {study.competitors.brands.map((brand) => (
                 <SpotlightCard
                   key={brand.name}
+                  interactive={false}
                   className="h-full rounded-2xl border border-brand-text/12 bg-brand-surface p-6 shadow-[0_12px_36px_-20px_rgba(26,20,38,0.1)]"
                   spotlightColor="rgba(178, 207, 192, 0.38)"
                 >
@@ -165,9 +150,9 @@ export function BosleyMDCaseStudy() {
                 </SpotlightCard>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div variants={fadeUpItem} className="mt-16 md:mt-20">
+          <div className="mt-16 md:mt-20">
             <SectionTitle>{study.recommendations.heading}</SectionTitle>
             <p className="mx-auto mt-2 max-w-[640px] text-center text-sm font-light text-brand-text/72">{study.recommendations.intro}</p>
             <p className="mx-auto mt-4 max-w-[640px] text-center text-xs font-normal text-brand-text/68">
@@ -189,9 +174,9 @@ export function BosleyMDCaseStudy() {
                 </article>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div variants={fadeUpItem} className="mt-16 md:mt-20">
+          <div className="mt-16 md:mt-20">
             <SectionTitle>{study.selection.heading}</SectionTitle>
             <p className="mx-auto mt-6 max-w-[720px] text-center text-sm font-normal leading-[1.55] text-brand-text/88">
               {study.selection.body}
@@ -202,9 +187,9 @@ export function BosleyMDCaseStudy() {
             <div className="mx-auto mt-10 max-w-3xl">
               <EvidenceFigure img={study.selection.evidence} onOpen={openEvidence} />
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div variants={fadeUpItem} className="mt-16 md:mt-20">
+          <div className="mt-16 md:mt-20">
             <SectionTitle>{study.collaborative.heading}</SectionTitle>
             <p className="mx-auto mt-2 max-w-[640px] text-center text-sm font-light text-brand-text/72">{study.collaborative.intro}</p>
             <p className="mx-auto mt-6 max-w-[720px] text-center text-sm font-normal leading-[1.55] text-brand-text/88">
@@ -216,9 +201,9 @@ export function BosleyMDCaseStudy() {
             <p className="mx-auto mt-4 max-w-[720px] text-center text-sm font-normal leading-[1.55] text-brand-text/78">
               {study.collaborative.publicNote}
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div variants={fadeUpItem} className="mt-16 md:mt-20">
+          <div className="mt-16 md:mt-20">
             <SectionTitle>{study.demonstrates.heading}</SectionTitle>
             <p className="mx-auto mt-6 max-w-[720px] text-center text-sm font-normal leading-[1.55] text-brand-text/88">
               {study.demonstrates.body}
@@ -226,7 +211,7 @@ export function BosleyMDCaseStudy() {
             <p className="mx-auto mt-4 max-w-[720px] text-center text-sm font-normal leading-[1.55] text-brand-text/88">
               {study.demonstrates.bodyContinued}
             </p>
-            <motion.ul variants={introTextItem} className="mt-10 flex flex-wrap justify-center gap-2">
+            <ul className="mt-10 flex flex-wrap justify-center gap-2">
               {study.skills.map((skill) => (
                 <li
                   key={skill}
@@ -235,13 +220,13 @@ export function BosleyMDCaseStudy() {
                   {skill}
                 </li>
               ))}
-            </motion.ul>
+            </ul>
             <p className="mx-auto mt-8 max-w-[720px] text-center text-sm font-normal leading-[1.55] text-brand-text/88">
               {study.demonstrates.closingStatement}
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div variants={fadeUpItem} className="mt-14 md:mt-16">
+          <div className="mt-14 md:mt-16">
             <SectionTitle>{study.supportingMaterials.heading}</SectionTitle>
             <p className="mx-auto mt-4 max-w-[640px] text-center text-sm font-normal leading-[1.55] text-brand-text/88">
               {study.supportingMaterials.intro}
@@ -254,16 +239,13 @@ export function BosleyMDCaseStudy() {
                 linkText="Collaborative report available on request"
               />
             </div>
-          </motion.div>
+          </div>
 
-          <motion.aside
-            variants={fadeUpItem}
-            className="mx-auto mt-10 max-w-[720px] rounded-2xl border border-brand-text/10 bg-brand-bg-muted/35 px-6 py-4 text-center md:mt-12"
-          >
+          <aside className="mx-auto mt-10 max-w-[720px] rounded-2xl border border-brand-text/10 bg-brand-bg-muted/35 px-6 py-4 text-center md:mt-12">
             <p className="text-xs font-light leading-[1.55] text-brand-text/68">{study.projectDisclaimer}</p>
-          </motion.aside>
+          </aside>
 
-          <motion.div variants={fadeUpItem} className="mx-auto mt-14 max-w-[640px] text-center md:mt-16">
+          <div className="mx-auto mt-14 max-w-[640px] text-center md:mt-16">
             <h3 className="font-display text-xl font-medium text-brand-text md:text-2xl">{study.closing.heading}</h3>
             <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/88">{study.closing.body}</p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
@@ -282,8 +264,8 @@ export function BosleyMDCaseStudy() {
                 Back to projects
               </button>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </section>
 
       <InfographicLightbox image={lightboxImage} onClose={closeLightbox} />

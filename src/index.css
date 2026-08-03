@@ -214,6 +214,15 @@ html[data-theme='inland-indigo'] .font-display {
   }
 }
 
+html.wl-case-study-active .bg-page {
+  animation-play-state: paused;
+}
+
+.case-study-mount {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1400px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .bg-page {
     animation: none;

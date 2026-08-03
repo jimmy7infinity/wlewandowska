@@ -9,12 +9,24 @@ import { useMetaballColors } from '../theme/useThemeColors.js'
  */
 export function MetaBallsBackdrop() {
   const [MetaBalls, setMetaBalls] = useState(null)
+  const [allowWebGL, setAllowWebGL] = useState(false)
   const reduceMotion = useReducedMotion()
   const suppressDuringCaseStudies = useCaseStudyMetaballSuppress()
   const { themeId } = useTheme()
   const { color, cursorBallColor } = useMetaballColors()
 
   useEffect(() => {
+    const mq = window.matchMedia(
+      '(min-width: 769px) and (prefers-reduced-motion: no-preference) and (hover: hover)',
+    )
+    const sync = () => setAllowWebGL(mq.matches)
+    sync()
+    mq.addEventListener('change', sync)
+    return () => mq.removeEventListener('change', sync)
+  }, [])
+
+  useEffect(() => {
+    if (!allowWebGL) return undefined
     let cancelled = false
     import('./MetaBalls.jsx').then((mod) => {
       if (!cancelled) setMetaBalls(() => mod.default)
@@ -22,9 +34,9 @@ export function MetaBallsBackdrop() {
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [allowWebGL])
 
-  if (!MetaBalls) return null
+  if (!allowWebGL || !MetaBalls) return null
 
   return (
     <div

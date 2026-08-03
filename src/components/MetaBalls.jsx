@@ -141,8 +141,10 @@ const MetaBalls = ({
 }) => {
   const containerRef = useRef(null);
   const pausedRef = useRef(paused);
+  const enableMouseRef = useRef(enableMouseInteraction);
   const resumeLoopRef = useRef(() => {});
   pausedRef.current = paused;
+  enableMouseRef.current = enableMouseInteraction;
 
   useEffect(() => {
     if (!paused) resumeLoopRef.current();
@@ -252,6 +254,7 @@ const MetaBalls = ({
     }
 
     function scheduleScrollTargetSync() {
+      if (pausedRef.current) return;
       if (scrollMeasurePending) return;
       scrollMeasurePending = true;
       requestAnimationFrame(() => {
@@ -283,7 +286,7 @@ const MetaBalls = ({
     mouseBallPos.y = (1 - live.anchorY) * gl.canvas.height;
 
     function onWindowPointerMove(e) {
-      if (!enableMouseInteraction) return;
+      if (!enableMouseRef.current || pausedRef.current) return;
       const rect = container.getBoundingClientRect();
       const hotspotX = rect.left + live.anchorX * rect.width;
       const hotspotY = rect.top + live.anchorY * rect.height;

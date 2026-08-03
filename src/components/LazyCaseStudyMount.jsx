@@ -54,7 +54,7 @@ export function LazyCaseStudyMount({ sectionId, children }) {
     <div
       ref={placeholderRef}
       id={sectionId}
-      className={mounted ? undefined : 'relative min-h-[60vh] snap-start snap-always'}
+      className={mounted ? 'case-study-mount' : 'relative min-h-[60vh]'}
     >
       {mounted ? children : null}
     </div>
