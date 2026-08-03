@@ -49,6 +49,7 @@ export const peterPizzeriaCaseStudy = {
     'Strategic planning',
     'KPI development',
   ],
+  evidenceHeading: 'Research & Measurement Framework',
   evidenceIntro:
     'The analysis combined four research streams to identify commercially relevant patterns and convert them into practical priorities for implementation.',
   infographics: [
@@ -56,13 +57,12 @@ export const peterPizzeriaCaseStudy = {
       src: '/projects/peter-pizzeria/research-approach.png',
       alt: 'Research approach: social media audit, TripAdvisor review analysis, competitor benchmarking and secondary research, triangulated for evidence-based recommendations.',
       caption:
-        'Mixed-methods research framework used to identify customer experience, content and positioning opportunities.',
+        'Mixed-methods framework used to identify customer experience, content and positioning opportunities.',
     },
     {
       src: '/projects/peter-pizzeria/proposed-kpis.png',
       alt: 'Proposed KPIs including weekly TikTok and Instagram cadence, people-led content share, engagement targets, Leicester rating goal, and pizza sentiment targets.',
-      caption: 'KPI framework designed to measure implementation of the proposed strategy over a 12-month period.',
-      heading: 'Proposed KPIs',
+      caption: 'Proposed KPI framework for measuring strategy implementation over 12 months.',
     },
   ],
   demonstrates: {
@@ -89,8 +89,6 @@ export const peterPizzeriaCaseStudy = {
       linkText: 'View full report',
     },
   ],
-  kpiDisclaimer:
-    'Proposed KPI figures are recommended targets for strategy implementation — not achieved results.',
   projectDisclaimer:
     'This was an individual academic consultancy project completed as part of my Marketing Management degree and awarded Distinction. Recommendations and KPIs were developed from original research; implementation and commercial outcomes were not independently measured.',
   closing: {

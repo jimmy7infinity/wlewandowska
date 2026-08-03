@@ -162,7 +162,7 @@ export function PeterPizzeriaCaseStudy() {
 
           <motion.div variants={fadeUpItem} className="mt-16 md:mt-20">
             <h3 className="font-display text-center text-xl font-medium text-brand-text md:text-2xl">
-              Evidence at a glance
+              {study.evidenceHeading}
             </h3>
             <p className="mx-auto mt-4 max-w-[640px] text-center text-sm font-normal leading-[1.55] text-brand-text/88">
               {study.evidenceIntro}
@@ -190,9 +190,6 @@ export function PeterPizzeriaCaseStudy() {
                 </figure>
               ))}
             </div>
-            <p className="mx-auto mt-6 max-w-[640px] text-center text-xs font-light text-brand-text/68">
-              {study.kpiDisclaimer}
-            </p>
           </motion.div>
 
           <motion.div variants={fadeUpItem} className="mt-14 md:mt-16">
