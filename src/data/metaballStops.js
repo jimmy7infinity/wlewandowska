@@ -29,6 +29,13 @@ export const METABALL_SCROLL_STOPS = [
     groupOffsetY: -0.42,
   },
   {
+    id: 'consultancy-peter-pizzeria',
+    clusterAnchorX: 0.28,
+    clusterAnchorY: 0.58,
+    groupOffsetX: -0.4,
+    groupOffsetY: 0.08,
+  },
+  {
     id: 'experience-intro',
     clusterAnchorX: 0.5,
     clusterAnchorY: 0.76,

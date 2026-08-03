@@ -87,11 +87,12 @@ export const mediaProjects = [
 
 export const consultancyProjects = [
   {
-    title: 'Go-to-market workshop',
+    title: 'Peter Pizzeria',
     description:
-      'Facilitated positioning sprint with leadership — competitive framing, audience clarity, and distilled messaging pillars the team can ship with.',
+      'Mixed-methods hospitality marketing consultancy — social audit, review analysis and competitor benchmarking for 18–30 audiences across three UK locations, with a phased roadmap and proposed KPIs.',
     category: 'Consultancy',
-    skills: ['Workshops', 'Positioning', 'Messaging'],
+    skills: ['Research', 'Strategy', 'Social audit', 'Hospitality'],
+    detailSectionId: 'consultancy-peter-pizzeria',
   },
   {
     title: 'Retention playbook',

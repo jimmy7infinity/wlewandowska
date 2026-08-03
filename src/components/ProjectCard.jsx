@@ -2,7 +2,13 @@ import { motion } from 'framer-motion'
 import { easeOut, fadeUpItem, inViewOnce, introTextContainer, introTextItem } from '../lib/motion'
 import SpotlightCard from './SpotlightCard'
 
-export function ProjectCard({ title, description, category, skills }) {
+export function ProjectCard({ title, description, category, skills, detailSectionId }) {
+  const scrollToDetail = () => {
+    if (detailSectionId) {
+      document.getElementById(detailSectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <motion.div variants={fadeUpItem} className="h-full">
       <SpotlightCard
@@ -46,6 +52,17 @@ export function ProjectCard({ title, description, category, skills }) {
               </li>
             ))}
           </motion.ul>
+          {detailSectionId ? (
+            <motion.div variants={introTextItem} className="mt-8">
+              <button
+                type="button"
+                onClick={scrollToDetail}
+                className="text-sm font-normal text-brand-accent-fg/90 underline-offset-4 transition-colors hover:text-brand-accent-fg hover:underline"
+              >
+                View case study
+              </button>
+            </motion.div>
+          ) : null}
         </motion.article>
       </SpotlightCard>
     </motion.div>
