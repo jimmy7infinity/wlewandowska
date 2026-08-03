@@ -2,7 +2,7 @@ export const peterPizzeriaCaseStudy = {
   id: 'consultancy-peter-pizzeria',
   eyebrow: 'Marketing strategy · Consumer insight · Awarded distinction',
   title: 'Customer Insight and Growth Strategy for Peter Pizzeria',
-  subtitle: 'Independent mixed-methods consultancy project for a multi-location hospitality brand',
+  subtitle: 'Independent mixed-methods university consultancy project for a multi-location hospitality brand',
   summary:
     'Peter Pizzeria is an independent Neapolitan-style restaurant group operating across Leicester, Loughborough and Nottingham. I conducted a mixed-methods consultancy project to identify why customer perceptions varied between locations and how the brand could strengthen its relevance among 18–30-year-old customers without the cost and disruption of a full rebrand.',
   summaryContinued:
@@ -90,7 +90,7 @@ export const peterPizzeriaCaseStudy = {
     },
   ],
   projectDisclaimer:
-    'This was an individual academic consultancy project completed as part of my Marketing Management degree and awarded Distinction. Recommendations and KPIs were developed from original research; implementation and commercial outcomes were not independently measured.',
+    'Recommendations and KPIs were developed from original research; implementation was outside the project scope.',
   closing: {
     heading: 'Interested in working together?',
     body:
