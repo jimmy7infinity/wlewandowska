@@ -18,9 +18,9 @@ export function PeterPizzeriaCaseStudy() {
         <div className="mx-auto w-full max-w-[1100px]">
           <header className="max-w-[700px]">
             <p className="text-xs font-light uppercase tracking-[0.35em] text-brand-text/62">{study.eyebrow}</p>
-            <h2 className="font-display mt-4 text-[32px] font-medium tracking-tight text-brand-text md:text-[40px]">
-              {study.title}
-            </h2>
+          <h1 className="font-display mt-4 text-[32px] font-medium tracking-tight text-brand-text md:text-[40px]">
+            {study.title}
+          </h1>
             <p className="mt-3 text-sm font-light text-brand-text/72 md:text-base">{study.subtitle}</p>
             <p className="mt-6 text-sm font-normal leading-[1.55] text-brand-text/92 md:text-base">{study.summary}</p>
             <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/92 md:text-base">

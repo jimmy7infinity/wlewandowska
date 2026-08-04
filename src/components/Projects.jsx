@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { sectionIntros } from '../data/content'
 import { staggerContainer, staggerList, fadeUpItem, inViewOnce } from '../lib/motion'
-import { IntroJumpCue } from './IntroJumpCue'
 import { ProjectCard } from './ProjectCard'
 import { SectionIntroHeading } from './SectionIntroHeading'
 import { SectionShell } from './SectionShell'
@@ -46,15 +45,6 @@ export function Projects({ id, title, projects }) {
             <ProjectCard key={project.title} {...project} />
           ))}
         </motion.div>
-        {projects.some((p) => p.detailSectionId) ? (
-          <motion.div variants={fadeUpItem} className="mt-10 flex flex-col items-center gap-6 md:mt-12">
-            {projects
-              .filter((p) => p.detailSectionId)
-              .map((p) => (
-                <IntroJumpCue key={p.detailSectionId} label={`${p.title} case study`} targetId={p.detailSectionId} />
-              ))}
-          </motion.div>
-        ) : null}
       </motion.div>
     </SectionShell>
   )

@@ -1,9 +1,14 @@
+import { Link, useLocation } from 'react-router-dom'
 import { contact } from '../data/content'
 import { scrollToSectionId } from '../lib/scrollToSection.js'
 import { LinkedInIcon } from './LinkedInIcon'
 
 export function SiteHeader() {
+  const { pathname } = useLocation()
+  const onHome = pathname === '/'
+
   const scrollHome = (e) => {
+    if (!onHome) return
     e.preventDefault()
     scrollToSectionId('hero')
   }
@@ -11,10 +16,10 @@ export function SiteHeader() {
   return (
     <header className="pointer-events-none fixed left-0 top-0 z-40 w-full px-6 pt-6 md:px-8 md:pt-8">
       <div className="pointer-events-auto inline-flex items-center gap-0.5 rounded-full border border-brand-text/12 bg-brand-bg/90 p-1.5 pl-2 backdrop-blur-sm">
-        <a
-          href="#hero"
+        <Link
+          to="/"
           className="shrink-0 rounded-full p-0.5 transition-opacity hover:opacity-85"
-          onClick={scrollHome}
+          onClick={onHome ? scrollHome : undefined}
         >
           <img
             src="/wl-logo.png"
@@ -23,7 +28,7 @@ export function SiteHeader() {
             height={44}
             className="h-10 w-10 rounded-full object-cover md:h-11 md:w-11"
           />
-        </a>
+        </Link>
         <span className="mx-0.5 h-8 w-px bg-brand-text/12" aria-hidden />
         <a
           href={contact.linkedin}

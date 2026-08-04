@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { scrollToSectionId } from '../lib/scrollToSection.js'
 
 const SECTIONS = [
@@ -8,10 +9,7 @@ const SECTIONS = [
   { id: 'education-undergrad', label: 'UG' },
   { id: 'education-postgrad', label: 'PG' },
   { id: 'media', label: 'Media' },
-  { id: 'media-beyond-the-dump', label: 'Dump' },
   { id: 'consultancy', label: 'Consult' },
-  { id: 'consultancy-peter-pizzeria', label: 'Peter P.' },
-  { id: 'consultancy-bosleymd', label: 'Bosley' },
   { id: 'experience-intro', label: 'CV' },
   { id: 'experience-think-pacific', label: 'Pacific' },
   { id: 'experience-dmu', label: 'DMU' },
@@ -20,42 +18,39 @@ const SECTIONS = [
 ]
 
 export function Navigation() {
+  const { pathname } = useLocation()
   const [activeId, setActiveId] = useState('hero')
+  const onHome = pathname === '/'
 
   useEffect(() => {
-    let observer
+    if (!onHome) return undefined
 
-    const attach = () => {
-      observer?.disconnect()
-      const nodes = SECTIONS.map((s) => document.getElementById(s.id)).filter(Boolean)
-      if (nodes.length === 0) return
+    const nodes = SECTIONS.map((s) => document.getElementById(s.id)).filter(Boolean)
+    if (nodes.length === 0) return undefined
 
-      observer = new IntersectionObserver(
-        (entries) => {
-          const visible = entries
-            .filter((e) => e.isIntersecting)
-            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-          if (visible[0]?.target?.id) {
-            setActiveId(visible[0].target.id)
-          }
-        },
-        {
-          root: null,
-          rootMargin: '-38% 0px -42% 0px',
-          threshold: [0, 0.15, 0.35, 0.55, 0.75, 1],
-        },
-      )
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+        if (visible[0]?.target?.id) {
+          setActiveId(visible[0].target.id)
+        }
+      },
+      {
+        root: null,
+        rootMargin: '-38% 0px -42% 0px',
+        threshold: [0, 0.15, 0.35, 0.55, 0.75, 1],
+      },
+    )
 
-      nodes.forEach((el) => observer.observe(el))
-    }
+    nodes.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [onHome])
 
-    attach()
-    window.addEventListener('wl-layout-change', attach)
-    return () => {
-      observer?.disconnect()
-      window.removeEventListener('wl-layout-change', attach)
-    }
-  }, [])
+  if (!onHome) {
+    return null
+  }
 
   const scrollTo = (id) => {
     scrollToSectionId(id)

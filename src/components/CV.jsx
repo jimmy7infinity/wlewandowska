@@ -18,7 +18,7 @@ function ExperienceIntroPage() {
   return (
     <section
       id="experience-intro"
-      className="wl-section-snap relative flex min-h-screen flex-col px-6 py-16 md:py-24"
+      className="wl-section-snap snap-start snap-always relative flex min-h-screen flex-col px-6 py-16 md:py-24"
     >
       <div className="mx-auto flex w-full max-w-[900px] flex-1 flex-col items-center justify-center text-center">
         <SectionIntroHeading
@@ -151,7 +151,7 @@ function ExperienceBlock({ item }) {
 
 function ExperiencePage({ item, sectionId, step }) {
   return (
-    <section id={sectionId} className="wl-section-snap relative flex min-h-screen flex-col">
+    <section id={sectionId} className="wl-section-snap snap-start snap-always relative flex min-h-screen flex-col">
       <div className="flex flex-1 flex-col justify-center px-6 py-10 md:py-14">
         <motion.div
           className="relative mx-auto w-full max-w-[900px]"

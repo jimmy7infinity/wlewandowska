@@ -10,22 +10,43 @@ function parseHexColor(hex) {
   return [r, g, b];
 }
 
-/** Browsers often resolve custom properties to `rgb()` / `rgba()` — shaders still need 0–1 RGB. */
+/** Resolve any CSS color string to 0–1 RGB (Safari oklch / space-separated rgb included). */
 function parseCssColorToRgb01(input) {
-  if (!input) return [1, 1, 1];
-  const s = input.trim();
+  if (!input) return null
+  const s = input.trim()
   if (s.startsWith('#')) {
-    return parseHexColor(s);
+    return parseHexColor(s)
   }
-  let m = s.match(/^rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)/i);
+  let m = s.match(/^rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)/i)
   if (m) {
-    return [Number(m[1]) / 255, Number(m[2]) / 255, Number(m[3]) / 255];
+    return [Number(m[1]) / 255, Number(m[2]) / 255, Number(m[3]) / 255]
   }
-  m = s.match(/^rgba?\(\s*([\d.]+)\s+([\d.]+)\s+([\d.]+)/i);
+  m = s.match(/^rgba?\(\s*([\d.]+)\s+([\d.]+)\s+([\d.]+)/i)
   if (m) {
-    return [Number(m[1]) / 255, Number(m[2]) / 255, Number(m[3]) / 255];
+    return [Number(m[1]) / 255, Number(m[2]) / 255, Number(m[3]) / 255]
   }
-  return [1, 1, 1];
+
+  if (typeof document !== 'undefined') {
+    const canvas = document.createElement('canvas')
+    canvas.width = 1
+    canvas.height = 1
+    const ctx = canvas.getContext('2d', { willReadFrequently: true })
+    if (ctx) {
+      ctx.fillStyle = '#000000'
+      ctx.fillStyle = s
+      if (ctx.fillStyle !== '#000000' && ctx.fillStyle !== 'rgb(0, 0, 0)') {
+        ctx.fillRect(0, 0, 1, 1)
+        const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data
+        return [r / 255, g / 255, b / 255]
+      }
+    }
+  }
+
+  return null
+}
+
+function parseCssColorToRgb01OrWhite(input) {
+  return parseCssColorToRgb01(input) ?? [1, 1, 1]
 }
 
 function fract(x) {
@@ -180,8 +201,8 @@ const MetaBalls = ({
     camera.position.z = 1;
 
     const geometry = new Triangle(gl);
-    const [r1, g1, b1] = parseCssColorToRgb01(color);
-    const [r2, g2, b2] = parseCssColorToRgb01(cursorBallColor);
+    const [r1, g1, b1] = parseCssColorToRgb01OrWhite(color);
+    const [r2, g2, b2] = parseCssColorToRgb01OrWhite(cursorBallColor);
 
     const metaBallsUniform = [];
     for (let i = 0; i < 50; i++) {

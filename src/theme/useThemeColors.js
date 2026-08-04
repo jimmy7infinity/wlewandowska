@@ -1,21 +1,15 @@
 import { useLayoutEffect, useState } from 'react'
+import { DEFAULT_METABALL_COLORS, THEME_METABALL_COLORS } from './themeMetaballColors.js'
 import { useTheme } from './useTheme.js'
 
 export function useMetaballColors() {
   const { themeId } = useTheme()
-  const [colors, setColors] = useState({ color: '#e6fbde', cursorBallColor: '#dff7d5' })
+  const [colors, setColors] = useState(
+    () => THEME_METABALL_COLORS[themeId] ?? DEFAULT_METABALL_COLORS,
+  )
 
   useLayoutEffect(() => {
-    const el = document.documentElement
-    const read = () => {
-      const color = getComputedStyle(el).getPropertyValue('--color-metaball-primary').trim() || '#ffffff'
-      const cursorBallColor =
-        getComputedStyle(el).getPropertyValue('--color-metaball-cursor').trim() || '#ffffff'
-      setColors({ color, cursorBallColor })
-    }
-    read()
-    window.addEventListener('wl-theme', read)
-    return () => window.removeEventListener('wl-theme', read)
+    setColors(THEME_METABALL_COLORS[themeId] ?? DEFAULT_METABALL_COLORS)
   }, [themeId])
 
   return colors

@@ -1,23 +1,6 @@
 import { beyondTheDumpCaseStudy as study } from '../data/beyondTheDump'
+import { DocumentaryStillsGrid } from './DocumentaryStillsGrid'
 import SpotlightCard from './SpotlightCard'
-
-function CaseStudyFigure({ image, priority = false }) {
-  return (
-    <figure className="mt-10 overflow-hidden rounded-2xl border border-brand-text/12 bg-brand-text/5 shadow-[0_14px_44px_-26px_rgba(26,20,38,0.18)] md:mt-12">
-      <div className="aspect-video w-full">
-        <img
-          src={image.src}
-          alt={image.alt}
-          width={1280}
-          height={720}
-          decoding="async"
-          fetchPriority={priority ? 'high' : 'auto'}
-          className="h-full w-full object-contain"
-        />
-      </div>
-    </figure>
-  )
-}
 
 function AwardLinks({ links }) {
   return (
@@ -40,17 +23,17 @@ function AwardLinks({ links }) {
 
 export function BeyondTheDumpCaseStudy() {
   return (
-    <section className="relative scroll-mt-0 px-6 py-20 md:py-[120px]">
+    <section className="relative scroll-mt-0 px-6 py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1100px]">
         <header className="max-w-[700px]">
           <p className="text-xs font-light uppercase tracking-[0.35em] text-brand-text/62">{study.eyebrow}</p>
-          <h2 className="font-display mt-4 text-[32px] font-medium tracking-tight text-brand-text md:text-[40px]">
+          <h1 className="font-display mt-4 text-[32px] font-medium tracking-tight text-brand-text md:text-[40px]">
             {study.title}
-          </h2>
+          </h1>
           <p className="mt-3 text-sm font-light text-brand-text/72 md:text-base">{study.subtitle}</p>
         </header>
 
-        <CaseStudyFigure image={study.heroImage} priority />
+        <DocumentaryStillsGrid images={study.stillsSetA} />
 
         <SpotlightCard
           interactive={false}
@@ -75,16 +58,16 @@ export function BeyondTheDumpCaseStudy() {
         </div>
 
         <div className="mt-14 max-w-[720px] md:mt-16">
-          <h3 className="font-display text-xl font-medium text-brand-text md:text-2xl">{study.role.heading}</h3>
+          <h2 className="font-display text-xl font-medium text-brand-text md:text-2xl">{study.role.heading}</h2>
           <p className="mt-3 text-sm font-medium tracking-wide text-brand-text/88">{study.role.credits}</p>
           <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/88">{study.role.body}</p>
           <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/88">{study.role.bodyContinued}</p>
         </div>
 
-        <CaseStudyFigure image={study.interviewImage} />
+        <DocumentaryStillsGrid images={study.stillsSetB} />
 
         <div className="mt-14 max-w-[720px] md:mt-16">
-          <h3 className="font-display text-xl font-medium text-brand-text md:text-2xl">{study.outcome.heading}</h3>
+          <h2 className="font-display text-xl font-medium text-brand-text md:text-2xl">{study.outcome.heading}</h2>
           <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/88">{study.outcome.body}</p>
         </div>
 

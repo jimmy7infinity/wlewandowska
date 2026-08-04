@@ -1,16 +1,26 @@
+const STILLS_A = Array.from({ length: 6 }, (_, index) => {
+  const n = String(index + 1).padStart(2, '0')
+  return {
+    src: `/projects/beyond-the-dump/stills/set-a/${n}.jpg`,
+    alt: `Beyond the Dump documentary still — on-location scene ${index + 1}`,
+  }
+})
+
+const STILLS_B = Array.from({ length: 6 }, (_, index) => {
+  const n = String(index + 1).padStart(2, '0')
+  return {
+    src: `/projects/beyond-the-dump/stills/set-b/${n}.jpg`,
+    alt: `Beyond the Dump documentary still — interview and community scene ${index + 1}`,
+  }
+})
+
 export const beyondTheDumpCaseStudy = {
   id: 'media-beyond-the-dump',
   eyebrow: 'Documentary film · Social impact · Festival award',
   title: 'Beyond the Dump',
   subtitle: 'Short social-impact documentary filmed in Jakarta, Indonesia',
-  heroImage: {
-    src: '/projects/beyond-the-dump/hero-landfill.jpg',
-    alt: 'Documentary still: a woman looks towards a landfill in Jakarta, Indonesia.',
-  },
-  interviewImage: {
-    src: '/projects/beyond-the-dump/interview-still.jpg',
-    alt: 'Documentary interview still with on-screen subtitle: “This is where we can find our source of income and where we go to school.”',
-  },
+  stillsSetA: STILLS_A,
+  stillsSetB: STILLS_B,
   award: {
     lines: ['2nd Runner-Up, PSA and PR Award', '5th LSPR SDGs Film Festival, 2023'],
     links: [

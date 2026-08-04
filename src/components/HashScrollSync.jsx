@@ -1,22 +1,16 @@
 import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { scrollToSectionId } from '../lib/scrollToSection.js'
 
-/** Re-align scroll after layout shifts (e.g. case studies mounting) when URL has a hash. */
+/** After navigating home with a hash (e.g. from a project page), scroll to that section. */
 export function HashScrollSync() {
-  useEffect(() => {
-    const syncFromHash = () => {
-      const id = window.location.hash.replace(/^#/, '')
-      if (id) scrollToSectionId(id)
-    }
+  const { pathname, hash } = useLocation()
 
-    syncFromHash()
-    window.addEventListener('hashchange', syncFromHash)
-    window.addEventListener('wl-layout-change', syncFromHash)
-    return () => {
-      window.removeEventListener('hashchange', syncFromHash)
-      window.removeEventListener('wl-layout-change', syncFromHash)
-    }
-  }, [])
+  useEffect(() => {
+    if (pathname !== '/' || !hash) return
+    const id = hash.replace(/^#/, '')
+    if (id) scrollToSectionId(id)
+  }, [pathname, hash])
 
   return null
 }

@@ -1,15 +1,9 @@
 import { motion } from 'framer-motion'
-import { scrollToSectionId } from '../lib/scrollToSection.js'
+import { Link } from 'react-router-dom'
 import { easeOut, fadeUpItem, inViewOnce, introTextContainer, introTextItem } from '../lib/motion'
 import SpotlightCard from './SpotlightCard'
 
-export function ProjectCard({ title, description, category, skills, detailSectionId }) {
-  const scrollToDetail = () => {
-    if (detailSectionId) {
-      scrollToSectionId(detailSectionId)
-    }
-  }
-
+export function ProjectCard({ title, description, category, skills, detailPath }) {
   return (
     <motion.div variants={fadeUpItem} className="h-full">
       <SpotlightCard
@@ -53,15 +47,14 @@ export function ProjectCard({ title, description, category, skills, detailSectio
               </li>
             ))}
           </motion.ul>
-          {detailSectionId ? (
+          {detailPath ? (
             <motion.div variants={introTextItem} className="mt-8">
-              <button
-                type="button"
-                onClick={scrollToDetail}
+              <Link
+                to={detailPath}
                 className="text-sm font-normal text-brand-accent-fg/90 underline-offset-4 transition-colors hover:text-brand-accent-fg hover:underline"
               >
-                View Case Study
-              </button>
+                View case study
+              </Link>
             </motion.div>
           ) : null}
         </motion.article>

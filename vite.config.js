@@ -6,6 +6,7 @@ import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { contact } from './src/data/content.js'
+import { PROJECT_ROUTES } from './src/data/projectRoutes.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -221,6 +222,7 @@ Allow: /
 
 Sitemap: ${effectiveUrl}/sitemap.xml
 `
+          const projectPaths = Object.values(PROJECT_ROUTES)
           const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -229,6 +231,16 @@ Sitemap: ${effectiveUrl}/sitemap.xml
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+${projectPaths
+  .map(
+    (p) => `  <url>
+    <loc>${effectiveUrl}${p}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>`,
+  )
+  .join('\n')}
 </urlset>
 `
           fs.writeFileSync(path.join(outDir, 'robots.txt'), robots, 'utf-8')

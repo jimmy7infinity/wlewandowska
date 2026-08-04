@@ -1,3 +1,5 @@
+import { PROJECT_ROUTES } from './projectRoutes'
+
 /** Short label + summary above section body (Education-style intros) */
 export const sectionIntros = {
   about: {
@@ -81,7 +83,7 @@ export const mediaProjects = [
       'Video editing',
       'Social-impact communication',
     ],
-    detailSectionId: 'media-beyond-the-dump',
+    detailPath: PROJECT_ROUTES.beyondTheDump,
   },
 ]
 
@@ -92,7 +94,7 @@ export const consultancyProjects = [
       'An evidence-led consultancy project examining customer experience, social media performance and competitive positioning across three restaurant locations. I analysed 113 customer reviews and 20 social posts, then developed location-specific recommendations, a 12-month roadmap and a proposed KPI framework.',
     category: 'Customer Insight and Growth Strategy',
     skills: ['Marketing strategy', 'Consumer insights', 'Social media audit', 'Competitor analysis'],
-    detailSectionId: 'consultancy-peter-pizzeria',
+    detailPath: PROJECT_ROUTES.peterPizzeria,
   },
   {
     title: 'BosleyMD',
@@ -100,6 +102,6 @@ export const consultancyProjects = [
       'A Distinction-level analysis of customer experience, acquisition, retention and development in the hair restoration market. I benchmarked BosleyMD against UK competitors, developed three SMART digital recommendations and was later selected to co-author a practitioner consultancy report for the brand.',
     category: 'Customer Strategy & Digital Engagement',
     skills: ['Consumer experience', 'Digital strategy', 'Competitor benchmarking', 'CRM', 'Personalisation'],
-    detailSectionId: 'consultancy-bosleymd',
+    detailPath: PROJECT_ROUTES.bosleyMD,
   },
 ]

@@ -16,7 +16,7 @@ function EducationIntroPage() {
   return (
     <section
       id="education-intro"
-      className="wl-section-snap relative flex min-h-screen flex-col px-6 py-20 md:py-[120px]"
+      className="wl-section-snap snap-start snap-always relative flex min-h-screen flex-col px-6 py-20 md:py-[120px]"
     >
       <div className="mx-auto flex w-full max-w-[1100px] flex-1 flex-col items-center justify-center text-center">
         <SectionIntroHeading
@@ -95,7 +95,7 @@ function EducationCard({ item }) {
 
 function EducationPage({ item, sectionId }) {
   return (
-    <section id={sectionId} className="wl-section-snap relative flex min-h-screen flex-col">
+    <section id={sectionId} className="wl-section-snap snap-start snap-always relative flex min-h-screen flex-col">
       <div className="flex flex-1 flex-col justify-center px-6 py-10 md:py-14">
         <motion.div
           className="relative mx-auto w-full max-w-[640px] md:max-w-[680px]"
