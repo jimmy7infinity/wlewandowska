@@ -8,6 +8,7 @@ const SECTIONS = [
   { id: 'education-undergrad', label: 'UG' },
   { id: 'education-postgrad', label: 'PG' },
   { id: 'media', label: 'Media' },
+  { id: 'media-beyond-the-dump', label: 'Dump' },
   { id: 'consultancy', label: 'Consult' },
   { id: 'consultancy-peter-pizzeria', label: 'Peter P.' },
   { id: 'consultancy-bosleymd', label: 'Bosley' },

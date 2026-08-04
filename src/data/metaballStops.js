@@ -22,6 +22,13 @@ export const METABALL_SCROLL_STOPS = [
   },
   { id: 'media', clusterAnchorX: 0.5, clusterAnchorY: 0.5, groupOffsetX: 0, groupOffsetY: 0 },
   {
+    id: 'media-beyond-the-dump',
+    clusterAnchorX: 0.32,
+    clusterAnchorY: 0.54,
+    groupOffsetX: -0.36,
+    groupOffsetY: 0.06,
+  },
+  {
     id: 'consultancy',
     clusterAnchorX: 0.84,
     clusterAnchorY: 0.66,

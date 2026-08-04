@@ -70,18 +70,18 @@ export const education = [
 
 export const mediaProjects = [
   {
-    title: 'Campaign narrative',
+    title: 'Beyond the Dump',
     description:
-      'Omnichannel launch narrative: tone of voice, channel plan, and asset rollout for a lifestyle brand — from first message to sustained engagement.',
-    category: 'Media',
-    skills: ['Content strategy', 'Social', 'Editorial'],
-  },
-  {
-    title: 'Brand film series',
-    description:
-      'Short-form documentary-style films spotlighting founders and product craft — story-led scripts, shoot coordination, and distribution across social.',
-    category: 'Media',
-    skills: ['Production', 'Storyboarding', 'Distribution'],
+      'Short social-impact documentary filmed in Jakarta — co-produced, co-directed and co-edited as a two-person team. 2nd Runner-Up, PSA and PR Award, 5th LSPR SDGs Film Festival, 2023.',
+    category: 'Documentary film',
+    skills: [
+      'Documentary storytelling',
+      'Interview production',
+      'On-location filming',
+      'Video editing',
+      'Social-impact communication',
+    ],
+    detailSectionId: 'media-beyond-the-dump',
   },
 ]
 

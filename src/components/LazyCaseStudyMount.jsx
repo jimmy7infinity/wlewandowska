@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 
-const CONSULTANCY_SECTION_ID = 'consultancy'
-
 function shouldMountForHash(sectionId) {
   if (typeof window === 'undefined') return false
   return window.location.hash === `#${sectionId}`
@@ -11,7 +9,7 @@ function shouldMountForHash(sectionId) {
  * Mount case studies before the user scrolls into them so document height and snap
  * points stay stable (avoids jumping from consultancy to CV).
  */
-export function LazyCaseStudyMount({ sectionId, children }) {
+export function LazyCaseStudyMount({ sectionId, prefetchSectionId = 'consultancy', children }) {
   const [mounted, setMounted] = useState(() => shouldMountForHash(sectionId))
   const placeholderRef = useRef(null)
 
@@ -30,16 +28,16 @@ export function LazyCaseStudyMount({ sectionId, children }) {
     }
     window.addEventListener('hashchange', onHashChange)
 
-    const consultEl = document.getElementById(CONSULTANCY_SECTION_ID)
-    let consultObserver
-    if (consultEl) {
-      consultObserver = new IntersectionObserver(
+    const prefetchEl = document.getElementById(prefetchSectionId)
+    let prefetchObserver
+    if (prefetchEl) {
+      prefetchObserver = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) mount()
         },
         { threshold: 0.05 },
       )
-      consultObserver.observe(consultEl)
+      prefetchObserver.observe(prefetchEl)
     }
 
     const el = placeholderRef.current
@@ -61,7 +59,7 @@ export function LazyCaseStudyMount({ sectionId, children }) {
 
     return () => {
       window.removeEventListener('hashchange', onHashChange)
-      consultObserver?.disconnect()
+      prefetchObserver?.disconnect()
       nearObserver?.disconnect()
       if (typeof requestIdleCallback !== 'undefined' && typeof idleId === 'number') {
         cancelIdleCallback(idleId)
@@ -69,7 +67,7 @@ export function LazyCaseStudyMount({ sectionId, children }) {
         window.clearTimeout(idleId)
       }
     }
-  }, [mounted, sectionId])
+  }, [mounted, prefetchSectionId, sectionId])
 
   useEffect(() => {
     if (!mounted) return undefined

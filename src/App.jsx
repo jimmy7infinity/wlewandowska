@@ -10,6 +10,7 @@ import { MetaBallsBackdrop } from './components/MetaBallsBackdrop'
 import { Navigation } from './components/Navigation'
 import { PageLoadTransition } from './components/PageLoadTransition'
 import { SiteHeader } from './components/SiteHeader'
+import { BeyondTheDumpCaseStudy } from './components/BeyondTheDumpCaseStudy'
 import { BosleyMDCaseStudy } from './components/BosleyMDCaseStudy'
 import { LazyCaseStudyMount } from './components/LazyCaseStudyMount'
 import { PeterPizzeriaCaseStudy } from './components/PeterPizzeriaCaseStudy'
@@ -43,6 +44,9 @@ function App() {
                 <About />
                 <Education />
                 <Projects id="media" title="Featured media projects" projects={mediaProjects} />
+                <LazyCaseStudyMount sectionId="media-beyond-the-dump" prefetchSectionId="media">
+                  <BeyondTheDumpCaseStudy />
+                </LazyCaseStudyMount>
                 <Projects id="consultancy" title="Featured consultancy projects" projects={consultancyProjects} />
                 <LazyCaseStudyMount sectionId="consultancy-peter-pizzeria">
                   <PeterPizzeriaCaseStudy />

@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 
-export const CASE_STUDY_SECTION_IDS = ['consultancy-peter-pizzeria', 'consultancy-bosleymd']
+export const CASE_STUDY_SECTION_IDS = [
+  'media-beyond-the-dump',
+  'consultancy-peter-pizzeria',
+  'consultancy-bosleymd',
+]
 
 /**
  * True while any case-study scroll section occupies the viewport — used to pause heavy backdrop work.
