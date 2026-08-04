@@ -85,6 +85,20 @@ export const mediaProjects = [
     ],
     detailPath: PROJECT_ROUTES.beyondTheDump,
   },
+  {
+    title: 'DMU Sport',
+    description:
+      'Short-form social content and programme support for DMU Sport — filming and editing vertical videos across university sport sessions, interview-led content, and organising the Basketball Social League.',
+    category: 'Social media content',
+    skills: [
+      'Short-form video production',
+      'Interview filming',
+      'Social media content',
+      'Event coordination',
+      'Student engagement',
+    ],
+    detailPath: PROJECT_ROUTES.dmuSport,
+  },
 ]
 
 export const consultancyProjects = [

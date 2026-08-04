@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { BeyondTheDumpCaseStudy } from './components/BeyondTheDumpCaseStudy'
 import { BosleyMDCaseStudy } from './components/BosleyMDCaseStudy'
+import { DmuSportCaseStudy } from './components/DmuSportCaseStudy'
 import { PeterPizzeriaCaseStudy } from './components/PeterPizzeriaCaseStudy'
 import { ScrollToTop } from './components/ScrollToTop'
 import { PROJECT_ROUTES } from './data/projectRoutes'
@@ -18,6 +19,14 @@ export function AppRoutes() {
           element={
             <CaseStudyPageLayout backHref="/#media" backLabel="← Back to media projects">
               <BeyondTheDumpCaseStudy />
+            </CaseStudyPageLayout>
+          }
+        />
+        <Route
+          path={PROJECT_ROUTES.dmuSport}
+          element={
+            <CaseStudyPageLayout backHref="/#media" backLabel="← Back to media projects">
+              <DmuSportCaseStudy />
             </CaseStudyPageLayout>
           }
         />
