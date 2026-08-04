@@ -1,17 +1,30 @@
 import { useCallback, useState } from 'react'
 import { dmuSportCaseStudy as study } from '../data/dmuSport'
+import { InfographicLightbox } from './caseStudyShared'
 import SpotlightCard from './SpotlightCard'
 import { VerticalVideoPlayer } from './VerticalVideoPlayer'
 
 export function DmuSportCaseStudy() {
   const [activeVideoId, setActiveVideoId] = useState(null)
+  const [recommendationLightbox, setRecommendationLightbox] = useState(null)
 
   const activateVideo = useCallback((id) => {
     setActiveVideoId(id)
   }, [])
 
+  const closeRecommendation = useCallback(() => setRecommendationLightbox(null), [])
+
+  const openRecommendation = () => {
+    setRecommendationLightbox({
+      src: study.recommendation.documentSrc,
+      alt: study.recommendation.documentLabel,
+      heading: study.recommendation.documentLabel,
+    })
+  }
+
   return (
-    <section className="relative scroll-mt-0 px-6 py-12 md:py-16">
+    <>
+      <section className="relative scroll-mt-0 px-6 py-12 md:py-16">
       <div className="mx-auto w-full max-w-[1100px]">
         <header className="max-w-[720px]">
           <p className="text-xs font-light uppercase tracking-[0.35em] text-brand-text/62">{study.eyebrow}</p>
@@ -64,15 +77,13 @@ export function DmuSportCaseStudy() {
             </blockquote>
             <p className="mt-4 text-sm font-medium text-brand-text">{study.recommendation.attribution}</p>
             <p className="mt-1 text-xs font-light text-brand-text/68">{study.recommendation.role}</p>
-            <a
-              href={study.recommendation.documentHref}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={openRecommendation}
               className="mt-6 inline-flex rounded-full border border-brand-text/14 bg-brand-bg-muted/55 px-4 py-2 text-sm font-normal text-brand-accent-fg/90 transition-colors hover:border-brand-accent-fg/35 hover:text-brand-accent-fg"
-              aria-label={study.recommendation.documentLabel}
             >
               {study.recommendation.buttonLabel}
-            </a>
+            </button>
           </SpotlightCard>
         </div>
 
@@ -108,5 +119,7 @@ export function DmuSportCaseStudy() {
         </ul>
       </div>
     </section>
+      <InfographicLightbox image={recommendationLightbox} onClose={closeRecommendation} />
+    </>
   )
 }

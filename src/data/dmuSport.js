@@ -37,7 +37,7 @@ export const dmuSportCaseStudy = {
       'Wiktoria has truly excelled in organising and managing the Basketball social leagues. Her ability to bring people together and create a fun and competitive environment has been truly impressive.',
     attribution: 'Rochelle Gough and Emilie Fairnington',
     role: 'Frontrunner Line Managers',
-    documentHref: '/projects/dmu-sport/written-recommendation.pdf',
+    documentSrc: '/projects/dmu-sport/written-recommendation.png',
     documentLabel: 'Written recommendation from DMU Sport line managers',
     buttonLabel: 'View written recommendation',
   },
