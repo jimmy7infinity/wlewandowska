@@ -1,26 +1,61 @@
-const STILLS_A = Array.from({ length: 6 }, (_, index) => {
-  const n = String(index + 1).padStart(2, '0')
-  return {
-    src: `/projects/beyond-the-dump/stills/set-a/${n}.jpg`,
-    alt: `Beyond the Dump documentary still — on-location scene ${index + 1}`,
-  }
-})
-
-const STILLS_B = Array.from({ length: 6 }, (_, index) => {
-  const n = String(index + 1).padStart(2, '0')
-  return {
-    src: `/projects/beyond-the-dump/stills/set-b/${n}.jpg`,
-    alt: `Beyond the Dump documentary still — interview and community scene ${index + 1}`,
-  }
-})
+const GALLERY = [
+  {
+    src: '/projects/beyond-the-dump/gallery/01-jakarta-cityscape.jpg',
+    alt: 'Jakarta cityscape with the Indonesian flag rising among skyscrapers and palm trees',
+  },
+  {
+    src: '/projects/beyond-the-dump/gallery/02-people-walking.jpg',
+    alt: 'People walking through the city — a transitional urban frame of everyday life in Jakarta',
+  },
+  {
+    src: '/projects/beyond-the-dump/gallery/03-waste-in-water.jpg',
+    alt: 'Waste floating in dark water — plastic bottles and debris on the surface',
+  },
+  {
+    src: '/projects/beyond-the-dump/gallery/04-collecting-bottles.jpg',
+    alt: 'Man collecting plastic bottles into a red bag outdoors',
+  },
+  {
+    src: '/projects/beyond-the-dump/gallery/05-street-interview.jpg',
+    alt: 'Street interview with a man, subtitled about throwing rubbish in the correct place',
+  },
+  {
+    src: '/projects/beyond-the-dump/gallery/06-shop-interview.jpg',
+    alt: 'Interview with a woman working in a shop, subtitled about plastic waste and purchasing',
+  },
+  {
+    src: '/projects/beyond-the-dump/gallery/07-women-interview.jpg',
+    alt: 'Women interviewed near the landfill, subtitled that this is where they find income and go to school',
+  },
+  {
+    src: '/projects/beyond-the-dump/gallery/08-working-among-waste.jpg',
+    alt: 'Person working among towering piles of waste at the landfill',
+  },
+  {
+    src: '/projects/beyond-the-dump/gallery/09-landfill-wide.jpg',
+    alt: 'Wide view of the landfill with trucks and a mountain of waste',
+  },
+  {
+    src: '/projects/beyond-the-dump/gallery/10-juliana-volunteer.jpg',
+    alt: 'Interview frame identifying Juliana as Volunteer at the landfill site',
+  },
+  {
+    src: '/projects/beyond-the-dump/gallery/11-community-session.jpg',
+    alt: 'Community educational session with children and a presenter using a puppet',
+  },
+  {
+    src: '/projects/beyond-the-dump/gallery/12-closing-group.jpg',
+    alt: 'Final group photograph with the Beyond the Dump title overlaid',
+  },
+]
 
 export const beyondTheDumpCaseStudy = {
   id: 'media-beyond-the-dump',
   eyebrow: 'Documentary film · Social impact · Festival award',
   title: 'Beyond the Dump',
   subtitle: 'Short social-impact documentary filmed in Jakarta, Indonesia',
-  stillsSetA: STILLS_A,
-  stillsSetB: STILLS_B,
+  stillsSetA: GALLERY.slice(0, 6),
+  stillsSetB: GALLERY.slice(6, 12),
   award: {
     lines: ['2nd Runner-Up, PSA and PR Award', '5th LSPR SDGs Film Festival, 2023'],
     links: [

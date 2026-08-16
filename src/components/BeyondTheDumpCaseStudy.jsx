@@ -1,5 +1,5 @@
 import { beyondTheDumpCaseStudy as study } from '../data/beyondTheDump'
-import { DocumentaryStillsGrid } from './DocumentaryStillsGrid'
+import { DocumentaryStillsCarousel } from './DocumentaryStillsCarousel'
 import SpotlightCard from './SpotlightCard'
 
 function AwardLinks({ links }) {
@@ -33,7 +33,7 @@ export function BeyondTheDumpCaseStudy() {
           <p className="mt-3 text-sm font-light text-brand-text/72 md:text-base">{study.subtitle}</p>
         </header>
 
-        <DocumentaryStillsGrid images={study.stillsSetA} />
+        <DocumentaryStillsCarousel images={study.stillsSetA} />
 
         <SpotlightCard
           interactive={false}
@@ -64,7 +64,7 @@ export function BeyondTheDumpCaseStudy() {
           <p className="mt-4 text-sm font-normal leading-[1.55] text-brand-text/88">{study.role.bodyContinued}</p>
         </div>
 
-        <DocumentaryStillsGrid images={study.stillsSetB} />
+        <DocumentaryStillsCarousel images={study.stillsSetB} />
 
         <div className="mt-14 max-w-[720px] md:mt-16">
           <h2 className="font-display text-xl font-medium text-brand-text md:text-2xl">{study.outcome.heading}</h2>
