@@ -99,6 +99,20 @@ export const mediaProjects = [
     ],
     detailPath: PROJECT_ROUTES.dmuSport,
   },
+  {
+    title: 'Poster & Visual Design',
+    description:
+      'Selected poster work across surrealist digital compositing and character-led film poster design — concept, art direction and finished artwork in Adobe Photoshop.',
+    category: 'Art direction',
+    skills: [
+      'Art direction',
+      'Poster design',
+      'Adobe Photoshop',
+      'Digital compositing',
+      'Typography',
+    ],
+    detailPath: PROJECT_ROUTES.posterVisualDesign,
+  },
 ]
 
 export const consultancyProjects = [

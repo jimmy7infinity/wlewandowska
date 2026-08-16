@@ -3,6 +3,7 @@ import { BeyondTheDumpCaseStudy } from './components/BeyondTheDumpCaseStudy'
 import { BosleyMDCaseStudy } from './components/BosleyMDCaseStudy'
 import { DmuSportCaseStudy } from './components/DmuSportCaseStudy'
 import { PeterPizzeriaCaseStudy } from './components/PeterPizzeriaCaseStudy'
+import { PosterVisualDesignCaseStudy } from './components/PosterVisualDesignCaseStudy'
 import { ScrollToTop } from './components/ScrollToTop'
 import { PROJECT_ROUTES } from './data/projectRoutes'
 import { CaseStudyPageLayout } from './pages/CaseStudyPageLayout'
@@ -27,6 +28,14 @@ export function AppRoutes() {
           element={
             <CaseStudyPageLayout backHref="/#media" backLabel="← Back to media projects">
               <DmuSportCaseStudy />
+            </CaseStudyPageLayout>
+          }
+        />
+        <Route
+          path={PROJECT_ROUTES.posterVisualDesign}
+          element={
+            <CaseStudyPageLayout backHref="/#media" backLabel="← Back to media projects">
+              <PosterVisualDesignCaseStudy />
             </CaseStudyPageLayout>
           }
         />

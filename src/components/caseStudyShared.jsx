@@ -46,17 +46,19 @@ export function InfographicLightbox({ image, onClose }) {
         Close
       </button>
       <figure
-        className="max-h-[90vh] max-w-[min(1100px,100%)] overflow-auto rounded-2xl border border-brand-surface/20 bg-brand-surface shadow-2xl"
+        className="flex max-h-[90vh] max-w-[min(1100px,100%)] flex-col overflow-hidden rounded-2xl border border-brand-surface/20 bg-brand-surface shadow-2xl"
         onClick={(event) => event.stopPropagation()}
       >
         {image.heading ? (
-          <p className="border-b border-brand-text/10 px-4 py-3 text-center text-xs font-light uppercase tracking-wider text-brand-text/72">
+          <p className="shrink-0 border-b border-brand-text/10 px-4 py-3 text-center text-xs font-light uppercase tracking-wider text-brand-text/72">
             {image.heading}
           </p>
         ) : null}
-        <img src={image.src} alt={image.alt} className="h-auto w-full" />
+        <div className="min-h-0 flex-1 overflow-auto">
+          <img src={image.src} alt={image.alt} className="mx-auto h-auto max-h-[min(82vh,1200px)] w-auto max-w-full object-contain" />
+        </div>
         {image.caption ? (
-          <figcaption className="px-4 py-3 text-center text-xs font-light text-brand-text/68">{image.caption}</figcaption>
+          <figcaption className="shrink-0 px-4 py-3 text-center text-xs font-light text-brand-text/68">{image.caption}</figcaption>
         ) : null}
       </figure>
     </div>
